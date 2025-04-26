@@ -21,12 +21,12 @@ function Search() {
         setSelectedLocation(event.target.value);
     };
     return (
-        <div className='container mx-auto my-10 border-8 rounded-lg text-[#410512]'>
-            <div className='text-center text-4xl text-bold my-7'>I'm looking for</div>
-            <div className='flex flex-wrap gap-8 text-center mx-50'>
+        <div className='w-full max-w-7xl mx-auto my-10 border-8 rounded-lg text-[#410512] px-4 sm:px-8 py-6'>
+            <div className='text-center text-4xl font-bold my-7'>I'm looking for</div>
+            <div className='flex flex-col md:flex-row flex-wrap gap-8 justify-center text-center my-10'>
                 <div className='flex flex-col'>
                     <label htmlFor="make" className='text-3xl mb-8'>Make</label>
-                    <select name="make" id="make" value={selectedMake} onChange={handleMakeChange} className="py-2 px-4 border-1 solid bg-white rounded-md text-black">
+                    <select name="make" id="make" value={selectedMake} onChange={handleMakeChange} className="py-2 px-4 border-1 min-w-[200px] solid bg-white rounded-md text-black">
                         <option value="" disabled>
                             Choose a make
                         </option>
@@ -44,7 +44,7 @@ function Search() {
                 </div>
                 <div className='flex flex-col'>
                     <label htmlFor="model" className='text-3xl mb-8'>Model</label>
-                    <select name="model" id="model" value={selectedModel} onChange={handleModelChange} className="py-2 px-4 border-1 solid bg-white rounded-md text-black">
+                    <select name="model" id="model" value={selectedModel} onChange={handleModelChange} className="py-2 px-4 min-w-[200px] border-1 solid bg-white rounded-md text-black">
                         <option value="" disabled>
                             Choose a model
                         </option>
@@ -62,22 +62,22 @@ function Search() {
                 </div>
                 <div className='flex flex-col'>
                     <h3 className='text-3xl'>Price</h3>
-                    <div className='flex'>
+                    <div className='flex lg:flex-row flex-col'>
                         <div className='flex flex-col'>
                             <label htmlFor="min-price" className='text-3xl'>Min</label>
-                            <input type="text" id="min-price" className='border-1 solid h-10' />
+                            <input type="text" id="min-price" className='border-1 solid h-10 bg-white' />
                         </div>
-                            <span className='text-5xl my-6 mx-3'>-</span>
-                    
+                        <span className='text-5xl my-6 mx-3'>-</span>
+
                         <div className='flex flex-col'>
                             <label htmlFor="max-price" className='text-3xl'>Max</label>
-                            <input type="text" id="max-price" className='border-1 solid h-10' />
+                            <input type="text" id="max-price" className='border-1 solid h-10 bg-white' />
                         </div>
                     </div>
                 </div>
                 <div className='flex flex-col'>
                     <label htmlFor="location" className='text-3xl mb-8'>Location</label>
-                    <select name="location" id="location" value={selectedLocation} onChange={handleLocationChange} className="py-2 px-4 border-1 solid bg-white rounded-md text-black">
+                    <select name="location" id="location" value={selectedLocation} onChange={handleLocationChange} className="py-2 px-4 border-1 min-w-[200px] solid bg-white rounded-md text-black">
                         <option value="" disabled>
                             Choose a location
                         </option>
@@ -94,6 +94,12 @@ function Search() {
                     )}
                 </div>
             </div>
+            <div className="flex justify-center mt-8">
+                <button className="bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition">
+                    Search Cars
+                </button>
+            </div>
+
 
         </div>
     )

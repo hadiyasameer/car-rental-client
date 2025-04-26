@@ -10,18 +10,18 @@ function Header() {
     }
     //mobile
     const content = <>
-        <div className='lg:hidden block absolute top-16 w-full left-0 right-0 bg-slate-900 transition'>
+        <div className='lg:hidden block absolute top-16 w-full left-0 right-0 bg-[#410512] transition'>
             <ul className='text-center text-xl p-20'>
-                <li className='my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded'>
-                    <Link to="Home">Home</Link>
+                <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
+                    <Link to="/">Home</Link>
                 </li>
-                <li className='my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded'>
+                <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
                     <Link to="Cars">Cars</Link>
                 </li>
-                <li className='my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded'>
+                <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
                     <Link to="About">About</Link>
                 </li>
-                <li className='my-4 py-4 border-b border-slate-800 hover:bg-slate-800 hover:rounded'>
+                <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
                     <Link to="Contact">Contact</Link>
                 </li>
             </ul>
@@ -33,7 +33,8 @@ function Header() {
         <nav>
             <div className='relative h-30 flex justify-between z-50 text-white lg:py-5 px-20 py-4 flex-1' >
                 <div className='flex items-center flex-1'>
-                    <span className='text-4xl font-bold text-yellow-400'>RideQatar</span>
+                    <span className='text-4xl font-bold text-yellow-400'>
+                        <Link to="/">RideQatar</Link></span>
                 </div>
                 <div className='lg:flex md:flex lg:flex-1 items-center justify-end font-normal hidden'>
 
@@ -41,7 +42,7 @@ function Header() {
                         <ul className='flex gap-8 mr-16 text-[18px] justify-end'>
 
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                                <Link to="Home">Home</Link>
+                                <Link to="/">Home</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
                                 <Link to="Cars">Cars</Link>

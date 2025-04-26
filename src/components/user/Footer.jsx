@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom';
 function Footer() {
     return (
         <>
-            <div className='flex justify-between z-50 text-white lg:py-5 px-20 py-4 flex-1' >
+            <div className="flex flex-col lg:flex-row justify-between gap-10 px-6 lg:px-30 pt-20 text-white">
                 <div className="flex flex-col flex-1">
-                    <span className="text-4xl font-bold text-yellow-400 w-1/2">RideQatar</span>
-                    <p className="text-white text-lg my-3 me-40">
+                    <span className="text-4xl font-bold text-yellow-400 w-1/2 cursor-pointer">
+                    <Link to="/">RideQatar</Link></span>
+                    <p className="text-white text-lg my-3 md:me-40">
                         Hit the road in style & comfort with our reliable rental cars.
                     </p>
                     <div className="flex mt-4 space-x-4 text-2xl ">
@@ -28,35 +29,36 @@ function Footer() {
 
                 <div className='flex flex-col flex-1'>
                     <span className='text-2xl font-bold text-yellow-400 w-1/2'>Useful Links</span>
-                    <ul className='space-y-2'>
+                    <ul className="flex flex-row md:flex-col gap-4 md:gap-2">
                         <li className='hover:text-yellow-500 transition font-medium text-xl hover:border-yellow-500 cursor-pointer'>
-                            <Link to="Home">Home</Link>
+                            <Link to="/">Home</Link>
                         </li>
                         <li className='hover:text-yellow-500 transition font-medium text-xl hover:border-yellow-500 cursor-pointer'>
-                            <Link to="Cars">Cars</Link>
+                            <Link to="/cars">Cars</Link>
                         </li>
                         <li className='hover:text-yellow-500 transition font-medium text-xl hover:border-yellow-500 cursor-pointer'>
-                            <Link to="About">About</Link>
+                            <Link to="/about">About</Link>
                         </li>
                         <li className='hover:text-yellow-500 transition font-medium text-xl hover:border-yellow-500 cursor-pointer'>
-                            <Link to="Contact">Contact</Link>
+                            <Link to="/contact">Contact</Link>
                         </li>
                     </ul>
                 </div>
 
                 <div className='flex flex-col flex-1'>
                     <span className='text-2xl font-bold text-yellow-400'>Terms & Conditions</span>
-                    <ul className='space-y-2'>
-                        <li className='hover:text-yellow-500 transition font-medium text-xl hover:border-yellow-500 cursor-pointer'>
-                            <Link to="Terms">Terms</Link>
+                    <ul className='gap-2 flex flex-row lg:flex-col'>
+                        <li className='hover:text-yellow-500 transition font-medium pe-5 text-xl hover:border-yellow-500 cursor-pointer'>
+                            <Link to="/terms">Terms</Link>
                         </li>
                         <li className='hover:text-yellow-500 transition font-medium text-xl hover:border-yellow-500 cursor-pointer'>
-                            <Link to="Conditions">Conditions</Link>
+                            <Link to="/conditions">Conditions</Link>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div className="text-center text-white py-4">
+
+            <div className="lg:text-center text-laft text-white py-4">
                 <p className="text-m">&copy; 2025 RideQatar. All rights reserved.</p>
             </div>
         </>
