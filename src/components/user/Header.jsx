@@ -54,7 +54,9 @@ function Header() {
                                 <Link to="Contact">Contact</Link>
                             </li>
                             <li>
-                                <button className='bg-yellow-400 text-black font-semibold  px-4 rounded hover:bg-yellow-500 text-3xl transition'>Join Us</button>
+                                <Link to="Login">
+                                    <button className='bg-yellow-400 text-black font-semibold  px-4 rounded hover:bg-yellow-500 text-3xl transition'>Join Us</button>
+                                </Link>
                             </li>
                         </ul>
                     </div>

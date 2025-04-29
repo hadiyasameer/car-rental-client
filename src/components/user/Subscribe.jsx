@@ -7,7 +7,7 @@ function Subscribe() {
             <div className="absolute inset-0 bg-black/50 z-0"></div>
             <p className='relative text-4xl font-bold mb-5'>Join our community to unlock exclusive deals, enjoy premium rides, and stay ahead with early access to special offers.</p>
             <div className='relative flex gap-5'>
-                <input type="text" id="email" className='border-1 solid h-10' defaultValue=" Enter your email address" />
+                <input type="text" id="email" className='border-1 solid h-10' placeholder=" Enter your email address" />
                 <button className="bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition">
                     Subscribe
                 </button>

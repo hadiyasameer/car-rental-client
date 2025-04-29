@@ -3,6 +3,9 @@ import Homepage from "../pages/user/Homepage"
 import Userlayout from "../layout/Userlayout"
 import About from "../pages/user/About"
 import Contact from "../pages/user/Contact"
+import Cars from "../pages/user/Cars"
+import Login from "../pages/shared/Login"
+import SignUp from "../pages/user/SignUp"
 
 export const router=createBrowserRouter([
     {
@@ -24,6 +27,14 @@ export const router=createBrowserRouter([
             {
                 path:"cars",
                 element:<Cars/>
+            },
+            {
+                path:"login",
+                element:<Login/>
+            },
+            {
+                path:"signup",
+                element:<SignUp/>
             }
 
         ]

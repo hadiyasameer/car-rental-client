@@ -1,0 +1,82 @@
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { userSignUp } from '../../services/userServices'
+import { toast } from 'react-toastify';
+
+function SignUp() {
+
+    const [values, setValues] = useState({
+        name: '',
+        email: '',
+        mobileNumber: '',
+        password: '',
+        confirmPassword: ''
+
+    })
+    
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues((prevValues) => ({
+            ...prevValues,
+            [name]: value
+        }));
+    };
+    const navigate = useNavigate()
+    const onSubmit = (e) => {
+        e.preventDefault()
+        userSignUp(values).then((res) => {
+            console.log(res);
+            toast.success("Signup successful")
+            navigate("/");
+        }).catch((err) => {
+            console.log(err);
+            console.log(values, "values")
+            toast.error(err?.response?.data?.message || "Signup failed", {
+                position: "top-center"
+            })
+        })
+    }
+    return (
+        <div className='p-5'>
+            <div className="hero bg-base-200 ">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <div className="text-center lg:text-left w-auto ">
+                        <h1 className="text-5xl font-bold whitespace-nowrap">Sign Up now!</h1>
+                    </div>
+                    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                        <form className="card-body" onSubmit={onSubmit}>
+                            <div className="form-control">
+                                <label className="label">Name</label>
+                                <input type="text" className="input" placeholder="Name" name='name' onChange={handleChange} />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">Email</label>
+                                <input type="email" className="input" name='email' placeholder="Email" onChange={handleChange} />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">Mobile Number</label>
+                                <input type="tel" className="input" name='mobileNumber' placeholder="Mobile Number" autoComplete="tel" onChange={handleChange} />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">Password</label>
+                                <input type="password" className="input" name='password' autoComplete="new-password" placeholder="Password" onChange={handleChange} />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">Confirm Password</label>
+                                <input type="password" className="input" name='confirmPassword' autoComplete="new-password" placeholder="Confirm Password" onChange={handleChange} />
+                            </div>
+
+                            <button className="form-control btn btn-neutral mt-4" >Sign Up</button>
+                            <div className='text-center'>
+                                Already a member?<Link to="/login" className='text-blue-600 underline px-3'>Login</Link>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+export default SignUp

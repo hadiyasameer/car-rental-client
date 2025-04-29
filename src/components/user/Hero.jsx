@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Hero() {
   return (
@@ -7,7 +8,9 @@ function Hero() {
       <div className="relative z-10 flex flex-col items-center">
         <span className="text-7xl font-bold mb-4 text-white">Rent Smart, Save Big</span>
         <p className="text-3xl mb-6 font-bold text-white">Cruise through Qatar with Comfort, Convenience & Class.</p>
-        <button className="bg-black text-white font-bold text-3xl py-2 px-6 rounded hover:bg-yellow-500 transition">Know More</button>
+        <Link to="/cars">
+          <button className="bg-black text-white font-bold text-3xl py-2 px-6 rounded hover:bg-yellow-500 transition">View Cars</button>
+        </Link>
       </div>
     </div>)
 }
