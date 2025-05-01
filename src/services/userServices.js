@@ -27,9 +27,12 @@ export const createBooking = (carId, startDate, endDate) => {
     );
 };
 
-// export const viewbooking = (carId) => {
-//     return axiosInstance.get("/booking/viewbooking")
-// }
+export const viewbooking = () => {
+    return axiosInstance.get("/booking/viewbooking")
+}
+export const cancelbooking = (bookingId) => {
+    return axiosInstance.delete(`/booking/cancelbooking/${bookingId}`)
+}
 export const viewCar = (carId) => {
     return axiosInstance.get(`/car/ViewCar/${carId}`)
 }

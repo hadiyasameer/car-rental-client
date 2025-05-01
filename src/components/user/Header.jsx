@@ -18,7 +18,7 @@ function Header() {
             await userLogout()
             await persister.purge()
             dispatch(clearUser())
-
+            navigate("/")
         } catch (error) {
             console.log(error);
 
@@ -80,7 +80,7 @@ function Header() {
                         {userData?.user?.name ? (
                             <div className="flex items-center gap-4">
                                 <span className="text-white text-3xl font-medium">{userData.user.name}</span>
-                                <Link to="/cart"><LuCalendarClock className='text-3xl' /></Link>
+                                <Link to="/booking"><LuCalendarClock className='text-3xl' /></Link>
                                 <button onClick={handleLogout}  className="text-[#410512] bg-white font-semibold px-4 py-1 rounded text-3xl cursor-pointer">
                                     Logout
                                 </button>

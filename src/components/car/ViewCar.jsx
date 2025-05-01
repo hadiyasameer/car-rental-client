@@ -52,7 +52,7 @@ function ViewCar() {
       <div className='flex'>
         <div >
           <h1 className="text-3xl font-bold w-full m-10">{car.title}</h1>
-          <figure className='flex-1  '>
+          <figure className='flex-1  w-200'>
             <img
               src={car.image}
               alt="Cars" className='relative object-cover w-3/4 h-full' />
