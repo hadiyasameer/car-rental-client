@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CarCards from '../../components/user/CarCards'
+import CarCards from '../../components/car/CarCards'
 import { axiosInstance } from '../../axios/axiosinstance'
 import { carlist } from '../../services/userServices'
 

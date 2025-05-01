@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
 import { userLogin } from '../../services/userServices';
 import { toast } from 'react-toastify';
-
+import { useDispatch } from 'react-redux';
+import { saveUser } from '../../redux/features/userSlice';
 
 function Login() {
 
@@ -20,12 +21,14 @@ function Login() {
         }));
     };
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const onSubmit = (e) => {
         e.preventDefault()
         userLogin(values).then((res) => {
-            console.log(res);
+            console.log(res.data);
             toast.success("Login successful")
+            dispatch(saveUser(res.data.data))
             navigate("/");
         }).catch((err) => {
             console.log(err);

@@ -3,12 +3,29 @@ import { FaCar } from 'react-icons/fa';
 import { TbManualGearbox } from 'react-icons/tb'
 import { BsFuelPump } from "react-icons/bs";
 import { PiArmchairFill } from "react-icons/pi";
+import { createBooking } from '../../services/userServices';
+import { Link } from 'react-router-dom';
 
 
 
 function CarCards({ car }) {
+
+    const bookCar = (carId) => {
+        try {
+            createBooking(carId).then((res) => {
+                console.log(res);
+
+            }).catch((err) => {
+                console.log(err);
+
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
-        <div>
+        <div className='m-10'>
             <div className="card bg-base-100 w-96 shadow-sm grid grid-cols-1" >
                 <figure className='w-full h-80'>
                     <img
@@ -34,7 +51,7 @@ function CarCards({ car }) {
                         </div>
                         <div className="group">
                             {car.transmission}
-                            <TbManualGearbox  className="text-2xl"/>
+                            <TbManualGearbox className="text-2xl" />
 
                         </div>
                         <div className="group">
@@ -42,16 +59,21 @@ function CarCards({ car }) {
                             <BsFuelPump className="text-2xl" />
 
                         </div>
-                        <di className="group">
+                        <div className="group">
                             {car.seatingCapacity}
-                            <PiArmchairFill  className="text-2xl"/>
-
-                        </di>
+                            <PiArmchairFill className="text-2xl" />
+                        </div>
+                    </div>
+                    <div className='flex justify-end'>
+                        <Link to={`/viewCar/${car._id}`}>
+                            <button className='bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition' >View Now</button>
+                        </Link>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
 export default CarCards
+//onClick={() => bookCar(car._id)}

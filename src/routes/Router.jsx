@@ -6,6 +6,8 @@ import Contact from "../pages/user/Contact"
 import Cars from "../pages/user/Cars"
 import Login from "../pages/shared/Login"
 import SignUp from "../pages/user/SignUp"
+import ViewCar from "../components/car/ViewCar"
+import Booking from "../pages/user/Booking"
 
 export const router=createBrowserRouter([
     {
@@ -29,13 +31,22 @@ export const router=createBrowserRouter([
                 element:<Cars/>
             },
             {
+                path:"booking",
+                element:<Booking/>
+            },
+
+            {
                 path:"login",
                 element:<Login/>
             },
             {
                 path:"signup",
                 element:<SignUp/>
-            }
+            },
+            {
+                path:"viewCar/:id",
+                element:<ViewCar/>
+            },
 
         ]
     }
