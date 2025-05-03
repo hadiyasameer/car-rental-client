@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { createBooking } from '../../services/userServices';
-import axios from 'axios';
 import { viewCar } from '../../services/userServices';
 import { FaCar } from 'react-icons/fa';
 import { TbManualGearbox } from 'react-icons/tb'
@@ -10,6 +9,9 @@ import { PiArmchairFill } from "react-icons/pi";
 import { toast } from 'react-toastify';
 
 function ViewCar() {
+  const location = useLocation()
+  const isAdmin = location.pathname.startsWith('/admin');
+
   const { id } = useParams();
   const [car, setCar] = useState(null);
   const [startDate, setStartDate] = useState('');
@@ -27,10 +29,12 @@ function ViewCar() {
       } finally {
         setLoading(false);
       }
-
     };
     fetchCar();
   }, [id]);
+
+  if (loading) return <div>Loading...</div>;
+  if (!car) return <div>No car details available.</div>;
 
   const handleBooking = async () => {
     try {
@@ -89,16 +93,21 @@ function ViewCar() {
           </div>
           <div>
             <p className="text-lg mb-4">{car.make} - {car.pricePerDay}/day</p>
-            <label>Start Date:
-              <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="border p-2 rounded block my-2" />
-            </label>
+            {!isAdmin && (
+              <>
+                <label>Start Date:
+                  <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="border p-2 rounded block my-2" />
+                </label>
 
-            <label>End Date:
-              <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="border p-2 rounded block my-2" />
-            </label>
-            <button onClick={handleBooking} className="bg-[#410512] text-white px-4 py-2 rounded hover:bg-[#5c1a27]">
-              Book
-            </button>
+                <label>End Date:
+                  <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="border p-2 rounded block my-2" />
+                </label>
+                <button onClick={handleBooking} className="bg-[#410512] text-white px-4 py-2 rounded hover:bg-[#5c1a27]">
+                  Book
+                </button>
+              </>
+            )
+            }
           </div>
         </div>
       </div>

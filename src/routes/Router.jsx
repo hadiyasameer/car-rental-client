@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom"
+import { createBrowserRouter } from "react-router-dom"
 import Homepage from "../pages/user/Homepage"
 import Userlayout from "../layout/Userlayout"
 import About from "../pages/user/About"
@@ -9,50 +9,80 @@ import SignUp from "../pages/user/SignUp"
 import ViewCar from "../components/car/ViewCar"
 import Booking from "../pages/user/Booking"
 import BookingSuccess from "../pages/user/BookingSuccess"
+import Adminlayout from "../layout/Adminlayout"
+import Home from "../pages/admin/Home"
+import AdminBookings from "../pages/admin/AdminBookings"
 
-export const router=createBrowserRouter([
+export const router = createBrowserRouter([
     {
-        path:"",
-        element:<Userlayout/>,
-        children:[
+        path: "",
+        element: <Userlayout />,
+        children: [
             {
-                path:"/",
-                element: <Homepage/>
+                path: "/",
+                element: <Homepage />
             },
             {
-                path:"about",
-                element: <About/>
+                path: "about",
+                element: <About />
             },
             {
-                path:"contact",
-                element:<Contact/>
+                path: "contact",
+                element: <Contact />
+            },
+            {
+                path: "cars",
+                element: <Cars />
+            },
+            {
+                path: "booking",
+                element: <Booking />
+            },
+
+            {
+                path: "login",
+                element: <Login />
+            },
+            {
+                path: "signup",
+                element: <SignUp />
+            },
+            {
+                path: "viewCar/:id",
+                element: <ViewCar />
+            },
+            {
+                path: "payment/success",
+                element: <BookingSuccess />
+            },
+
+        ]
+    },
+    {
+        path: "admin",
+        element: <Adminlayout />,
+        children: [
+            {
+                path: "",
+                element: <Home />
+            },
+            {
+                path: "login",
+                element: <Login />
             },
             {
                 path:"cars",
-                element:<Cars/>
+                element:<Cars />
             },
             {
-                path:"booking",
-                element:<Booking/>
-            },
-
-            {
-                path:"login",
-                element:<Login/>
+                path: "viewCar/:id",
+                element: <ViewCar />
             },
             {
-                path:"signup",
-                element:<SignUp/>
+                path: "bookings",
+                element: <AdminBookings />
             },
-            {
-                path:"viewCar/:id",
-                element:<ViewCar/>
-            },
-            {
-                path:"payment/success",
-                element:<BookingSuccess/>
-            },
-
+            
         ]
     }
 ])

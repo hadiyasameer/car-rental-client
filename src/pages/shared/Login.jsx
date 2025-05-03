@@ -1,10 +1,12 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useState } from 'react';
-import { userLogin } from '../../services/userServices';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
+import { userLogin } from '../../services/userServices';
+import { adminLogin } from '../../services/adminServices';
 import { saveUser } from '../../redux/features/userSlice';
+import { saveAdmin } from '../../redux/features/adminSlice';
 
 function Login() {
 
@@ -22,21 +24,30 @@ function Login() {
     };
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const location = useLocation()
+    const isAdmin = location.pathname.includes('/admin')
 
     const onSubmit = (e) => {
         e.preventDefault()
-        userLogin(values).then((res) => {
-            console.log(res.data);
-            toast.success("Login successful")
-            dispatch(saveUser(res.data.data))
-            navigate("/");
-        }).catch((err) => {
-            console.log(err);
-            console.log(values, "values")
-            toast.error(err?.response?.data?.message || "Login failed", {
-                position: "top-center"
+        const loginFunc = isAdmin ? adminLogin : userLogin;
+        loginFunc(values)
+            .then((res) => {
+                toast.success("Login successful")
+                if (isAdmin) {
+                    console.log("Admin login response:", res.data.data);
+                    dispatch(saveAdmin(res.data.data));
+                    navigate("/admin");
+                } else {
+                    dispatch(saveUser(res.data.data));
+                    navigate("/");
+                }
             })
-        })
+            .catch((err) => {
+                console.log(err);
+                toast.error(err?.response?.data?.message || "Login failed", {
+                    position: "top-center"
+                })
+            })
     }
 
     return (
@@ -44,7 +55,7 @@ function Login() {
             <div className="hero bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold whitespace-nowrap">Login now!</h1>
+                        <h1 className="text-5xl font-bold whitespace-nowrap">{isAdmin ? 'Admin Login' : 'Login now!'}</h1>
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <form className="card-body" onSubmit={onSubmit}>
@@ -58,9 +69,11 @@ function Login() {
                             </div>
                             <div><a className="link link-hover">Forgot password?</a></div>
                             <button className="form-control btn btn-neutral mt-4" >Login</button>
-                            <div className='text-center'>
-                                Join us today!<Link to="/signup" className='text-blue-600 underline px-3'>Sign Up</Link>
-                            </div>
+                            {!isAdmin && (
+                                <div className='text-center'>
+                                    Join us today!<Link to="/signup" className='text-blue-600 underline px-3'>Sign Up</Link>
+                                </div>
+                            )}
                         </form>
                     </div>
                 </div>
