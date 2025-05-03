@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineMenu } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
@@ -21,7 +21,6 @@ function Header() {
             navigate("/")
         } catch (error) {
             console.log(error);
-
         }
     }
 
@@ -29,6 +28,17 @@ function Header() {
     const handleClick = () => {
         setClick(!click)
     }
+
+    const [firstVisit, setFirstVisit] = useState(false);
+
+    useEffect(() => {
+        const visited = localStorage.getItem("visited");
+        if (!visited) {
+            setFirstVisit(true);
+            localStorage.setItem("visited", "true");
+        }
+    }, []);
+
 
     // mobile
     const content = (
@@ -77,21 +87,21 @@ function Header() {
                         </ul>
                     </div>
                     <div className='nav-end gap-5'>
-                        {userData?.user?.name ? (
+                        {userData.user.name && Object.keys(userData.user.name).length > 0 ? (
                             <div className="flex items-center gap-4">
-                                <span className="text-white text-3xl font-medium">{userData.user.name}</span>
-                                <Link to="/booking"><LuCalendarClock className='text-3xl' /></Link>
-                                <button onClick={handleLogout}  className="text-[#410512] bg-white font-semibold px-4 py-1 rounded text-3xl cursor-pointer">
-                                    Logout
-                                </button>
-                            </div>
-                        ) : (
+                            <span className="text-white text-3xl font-medium">{userData.user.name}</span>
+                            <Link to="/booking"><LuCalendarClock className='text-3xl' /></Link>
+                            <button onClick={handleLogout} className="text-[#410512] bg-white font-semibold px-4 py-1 rounded text-3xl cursor-pointer">
+                                Logout
+                            </button>
+                        </div>):(
                             <Link to="/login">
                                 <button className="bg-yellow-400 text-black font-semibold px-4 rounded hover:bg-yellow-500 text-3xl transition">
                                     Join Us
                                 </button>
-                            </Link>
-                        )}
+                            </Link>)                 
+                        
+                        }
 
                     </div>
                 </div>

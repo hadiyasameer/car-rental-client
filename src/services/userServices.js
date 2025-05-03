@@ -15,7 +15,7 @@ export const userLogin = (data) => {
 }
 
 export const userLogout = () => {
-    return axiosInstance.post("user/logout",{},{ withCredentials: true });
+    return axiosInstance.post("user/logout", {}, { withCredentials: true });
 
 }
 
@@ -33,6 +33,18 @@ export const viewbooking = () => {
 export const cancelbooking = (bookingId) => {
     return axiosInstance.delete(`/booking/cancelbooking/${bookingId}`)
 }
+// export const updateBookingStatus = (bookingId, status) => {
+//     return axiosInstance.put(`/booking/update-booking-status/${bookingId}`, { status });
+// };
+
 export const viewCar = (carId) => {
     return axiosInstance.get(`/car/ViewCar/${carId}`)
 }
+
+export const makepaymentOnStripe = (body) => {
+    return axiosInstance.post(`/payment/makepayment`, body)
+}
+
+export const clearBookings = (bookingId) => {
+    return axiosInstance.post('/booking/clearbooking', { bookingId });
+};

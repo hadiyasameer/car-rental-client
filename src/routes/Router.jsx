@@ -8,6 +8,7 @@ import Login from "../pages/shared/Login"
 import SignUp from "../pages/user/SignUp"
 import ViewCar from "../components/car/ViewCar"
 import Booking from "../pages/user/Booking"
+import BookingSuccess from "../pages/user/BookingSuccess"
 
 export const router=createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router=createBrowserRouter([
             {
                 path:"viewCar/:id",
                 element:<ViewCar/>
+            },
+            {
+                path:"payment/success",
+                element:<BookingSuccess/>
             },
 
         ]
