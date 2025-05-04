@@ -12,6 +12,7 @@ import BookingSuccess from "../pages/user/BookingSuccess"
 import Adminlayout from "../layout/Adminlayout"
 import Home from "../pages/admin/Home"
 import AdminBookings from "../pages/admin/AdminBookings"
+import Profile from "../pages/user/Profile"
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path: "signup",
                 element: <SignUp />
+            },
+            {
+                path: "profile",
+                element: <Profile />
             },
             {
                 path: "viewCar/:id",

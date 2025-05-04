@@ -38,7 +38,10 @@ function Header() {
             localStorage.setItem("visited", "true");
         }
     }, []);
-
+    console.log('userData:', userData);
+    console.log('userData.name:', userData.name);
+    console.log('Type of userData.name:', typeof userData.name);
+    
 
     // mobile
     const content = (
@@ -76,31 +79,31 @@ function Header() {
                                 <Link to="/">Home</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                                <Link to="Cars">Cars</Link>
+                                <Link to="/Cars">Cars</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                                <Link to="About">About</Link>
+                                <Link to="/About">About</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                                <Link to="Contact">Contact</Link>
+                                <Link to="/Contact">Contact</Link>
                             </li>
                         </ul>
                     </div>
                     <div className='nav-end gap-5'>
-                        {userData.user.name && Object.keys(userData.user.name).length > 0 ? (
+                    {userData && userData.name ? (
                             <div className="flex items-center gap-4">
-                            <span className="text-white text-3xl font-medium">{userData.user.name}</span>
-                            <Link to="/booking"><LuCalendarClock className='text-3xl' /></Link>
-                            <button onClick={handleLogout} className="text-[#410512] bg-white font-semibold px-4 py-1 rounded text-3xl cursor-pointer">
-                                Logout
-                            </button>
-                        </div>):(
+                                <Link to="/profile"><span className="text-white text-3xl font-medium">{userData.name}</span></Link>
+                                <Link to="/booking"><LuCalendarClock className='text-3xl' /></Link>
+                                <button onClick={handleLogout} className="text-[#410512] bg-white font-semibold px-4 py-1 rounded text-3xl cursor-pointer">
+                                    Logout
+                                </button>
+                            </div>) : (
                             <Link to="/login">
                                 <button className="bg-yellow-400 text-black font-semibold px-4 rounded hover:bg-yellow-500 text-3xl transition">
                                     Join Us
                                 </button>
-                            </Link>)                 
-                        
+                            </Link>)
+
                         }
 
                     </div>

@@ -48,3 +48,7 @@ export const makepaymentOnStripe = (body) => {
 export const clearBookings = (bookingId) => {
     return axiosInstance.post('/booking/clearbooking', { bookingId });
 };
+
+export const getUserProfile = () => {
+    return axiosInstance.get("/user/profile");
+};
