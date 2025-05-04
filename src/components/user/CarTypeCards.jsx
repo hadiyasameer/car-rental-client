@@ -7,10 +7,10 @@ function CarTypeCards() {
   return (
     <div className='flex flex-col lg:flex-row text-center justify-between mx-10'>
       <div
-        onClick={() => navigate(`/sedan-cars`)}
+        onClick={() => navigate(`/cars/sedan`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/sedan-cars`)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars/sedan`)}
         className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-1/5"
       >
         <img
@@ -21,10 +21,10 @@ function CarTypeCards() {
         <h3 className="mt-4 text-xl font-bold text-[#410512]">Sedan</h3>
       </div>
       <div
-        onClick={() => navigate(`/SUVs`)}
+        onClick={() => navigate(`/cars/suv`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/SUVs`)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars/suv`)}
         className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-1/5"
       >
         <img
@@ -36,10 +36,10 @@ function CarTypeCards() {
       </div>
 
       <div
-        onClick={() => navigate(`/offroad-cars`)}
+        onClick={() => navigate(`/cars/offroad`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/offroad-cars`)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars/offroad`)}
         className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-1/5"
       >
         <img
@@ -50,10 +50,10 @@ function CarTypeCards() {
         <h3 className="mt-4 text-xl font-bold text-[#410512]">Offroad</h3>
       </div>
       <div
-        onClick={() => navigate(`/luxury-cars`)}
+        onClick={() => navigate(`/cars/luxury`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/luxury-cars`)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars/luxury`)}
         className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-1/5"
       >
         <img

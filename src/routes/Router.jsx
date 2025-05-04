@@ -36,6 +36,11 @@ export const router = createBrowserRouter([
                 element: <Cars />
             },
             {
+                path:"/cars/:carType",
+                element:< Cars />
+            },
+
+            {
                 path: "booking",
                 element: <Booking />
             },
@@ -76,8 +81,8 @@ export const router = createBrowserRouter([
                 element: <Login />
             },
             {
-                path:"cars",
-                element:<Cars />
+                path: "cars",
+                element: <Cars />
             },
             {
                 path: "viewCar/:id",
@@ -87,7 +92,7 @@ export const router = createBrowserRouter([
                 path: "bookings",
                 element: <AdminBookings />
             },
-            
+
         ]
     }
 ])

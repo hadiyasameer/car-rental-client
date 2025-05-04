@@ -1,11 +1,5 @@
 import { axiosInstance } from "../axios/axiosinstance"
 
-
-export const carlist = () => {
-    return axiosInstance.get("/car/carlist")
-}
-
-
 export const userSignUp = (data) => {
     return axiosInstance.post("user/signup", data)
 }
@@ -52,3 +46,10 @@ export const clearBookings = (bookingId) => {
 export const getUserProfile = () => {
     return axiosInstance.get("/user/profile");
 };
+
+
+export const carlist = (carType = '') => {
+    const url = carType ? `/car/carlist?carType=${carType}` : '/car/carlist';
+    return axiosInstance.get(url);
+  };
+  
