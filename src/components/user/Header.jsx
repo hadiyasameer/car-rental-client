@@ -7,9 +7,11 @@ import { userLogout } from '../../services/userServices';
 import { persister } from '../../redux/store';
 import { clearUser } from '../../redux/features/userSlice';
 import { LuCalendarClock } from "react-icons/lu";
+import { RiAdminLine } from "react-icons/ri";
+
 
 function Header() {
-    const userData = useSelector((state) => state.user)
+    const userData = useSelector((state) => state.user.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -90,7 +92,7 @@ function Header() {
                         </ul>
                     </div>
                     <div className='nav-end gap-5'>
-                    {userData && userData.name ? (
+                    {userData.email ? (
                             <div className="flex items-center gap-4">
                                 <Link to="/profile"><span className="text-white text-3xl font-medium">{userData.name}</span></Link>
                                 <Link to="/booking"><LuCalendarClock className='text-3xl' /></Link>
@@ -105,8 +107,10 @@ function Header() {
                             </Link>)
 
                         }
-
                     </div>
+                    <Link to="/admin">
+                    <RiAdminLine className='absolute top-5 right-5' />
+                    </Link>
                 </div>
 
                 {click && content}

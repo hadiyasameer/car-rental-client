@@ -5,7 +5,7 @@ export const userSignUp = (data) => {
 }
 
 export const userLogin = (data) => {
-    return axiosInstance.put("user/login", data)
+    return axiosInstance.post("user/login", data)
 }
 
 export const userLogout = () => {
@@ -48,8 +48,7 @@ export const getUserProfile = () => {
 };
 
 
-export const carlist = (carType = '') => {
-    const url = carType ? `/car/carlist?carType=${carType}` : '/car/carlist';
-    return axiosInstance.get(url);
+export const carlist = (filters = {}) => {
+    return axiosInstance.get('/car/carlist', { params: filters });
   };
   

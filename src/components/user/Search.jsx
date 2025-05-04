@@ -1,7 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Search() {
+    const navigate = useNavigate()
+
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
+
     const [selectedMake, setSelectedMake] = useState('');
     const carMakes = ['Toyota', 'BMW', 'Mercedes', 'Audi', 'Honda', 'Ford', 'Chevrolet', 'Nissan', 'Hyundai',];
 
@@ -20,6 +26,22 @@ function Search() {
     const handleLocationChange = (event) => {
         setSelectedLocation(event.target.value);
     };
+    const handleSearch = () => {
+        const filters = {
+            make: selectedMake,
+            model: selectedModel,
+            location: selectedLocation,
+            minPrice: minPrice.trim(),
+            maxPrice: maxPrice.trim()
+        };
+        const queryParams = new URLSearchParams();
+        Object.entries(filters).forEach(([key, value]) => {
+            if (value) queryParams.append(key, value);
+        });
+
+        navigate(`/cars?${queryParams.toString()}`);
+        console.log('Filters:', filters);
+    }
     return (
         <div className='w-full max-w-7xl mx-auto my-10 border-8 rounded-lg text-[#410512] px-4 sm:px-8 py-6'>
             <div className='text-center text-4xl font-bold my-7'>I'm looking for</div>
@@ -65,13 +87,13 @@ function Search() {
                     <div className='flex lg:flex-row flex-col'>
                         <div className='flex flex-col'>
                             <label htmlFor="min-price" className='text-3xl'>Min</label>
-                            <input type="text" id="min-price" className='border-1 solid h-10 bg-white' />
+                            <input type="text" id="min-price" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} className='border-1 solid h-10 bg-white' />
                         </div>
                         <span className='text-5xl my-6 mx-3'>-</span>
 
                         <div className='flex flex-col'>
                             <label htmlFor="max-price" className='text-3xl'>Max</label>
-                            <input type="text" id="max-price" className='border-1 solid h-10 bg-white' />
+                            <input type="text" id="max-price" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} className='border-1 solid h-10 bg-white' />
                         </div>
                     </div>
                 </div>
@@ -95,7 +117,7 @@ function Search() {
                 </div>
             </div>
             <div className="flex justify-center mt-8">
-                <button className="bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition">
+                <button onClick={handleSearch} className="bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition">
                     Search Cars
                 </button>
             </div>
