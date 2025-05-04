@@ -10,7 +10,7 @@ export const carlist = () => {
     return axiosInstance.get("/car/carlist")
 }
 export const getAdminBookings = async () => {
-    return await axiosInstance.get('/booking/adminbooking', { withCredentials: true });
+    return axiosInstance.get('/booking/adminbooking', { withCredentials: true });
 };
 export const viewCar = (carId) => {
     return axiosInstance.get(`/car/ViewCar/${carId}`)

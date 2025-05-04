@@ -3,24 +3,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineMenu } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import { userLogout } from '../../services/userServices';
+import { dealerLogout } from '../../services/dealerServices';
 import { persister } from '../../redux/store';
 import { clearUser } from '../../redux/features/userSlice';
 import { LuCalendarClock } from "react-icons/lu";
 import { RiAdminLine } from "react-icons/ri";
+import { clearDealer } from '../../redux/features/dealerSlice';
 
 
 function Header() {
-    const userData = useSelector((state) => state.user.user)
+    const dealerData = useSelector((state) => state.dealer.dealer)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleLogout = async () => {
         try {
-            await userLogout()
+            await dealerLogout()
             await persister.purge()
-            dispatch(clearUser())
-            navigate("/")
+            dispatch(clearDealer())
+            navigate("/dealer")
         } catch (error) {
             console.log(error);
         }
@@ -40,26 +41,23 @@ function Header() {
             localStorage.setItem("visited", "true");
         }
     }, []);
-    console.log('userData:', userData);
-    console.log('userData.name:', userData.name);
-    console.log('Type of userData.name:', typeof userData.name);
-
+    
 
     // mobile
     const content = (
         <div className='lg:hidden block absolute top-16 w-full left-0 right-0 bg-[#410512] transition'>
             <ul className='text-center text-xl p-20'>
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
-                    <Link to="/">Home</Link>
+                    <Link to="/dealer">Home</Link>
                 </li>
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
-                    <Link to="Cars">Cars</Link>
+                    <Link to="/dealer/carlist">Cars</Link>
                 </li>
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
-                    <Link to="About">About</Link>
+                    <Link to="/dealer/bookings">Bookings</Link>
                 </li>
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
-                    <Link to="Contact">Contact</Link>
+                    <Link to="/dealer/about">About</Link>
                 </li>
             </ul>
         </div>
@@ -70,7 +68,7 @@ function Header() {
             <div className='relative h-30 flex justify-between z-50 text-white lg:py-5 px-20 py-4 flex-1'>
                 <div className='flex items-center flex-1'>
                     <span className='text-4xl font-bold text-yellow-400'>
-                        <Link to="/">RideQatar</Link>
+                        <Link to="/dealer">RideQatar</Link>
                     </span>
                 </div>
 
@@ -78,43 +76,36 @@ function Header() {
                     <div className='flex-10'>
                         <ul className='flex gap-8 mr-16 text-[18px] justify-end'>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                                <Link to="/">Home</Link>
+                                <Link to="/dealer">Home</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                                <Link to="/Cars">Cars</Link>
+                                <Link to="/dealer/carlist">Cars</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                                <Link to="/About">About</Link>
+                                <Link to="/dealer/bookings">Bookings</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                                <Link to="/Contact">Contact</Link>
+                                <Link to="/dealer/about">About</Link>
                             </li>
+
                         </ul>
                     </div>
                     <div className='nav-end gap-5'>
-                        {userData.email ? (
+                    {dealerData.email ? (
                             <div className="flex items-center gap-4">
-                                <Link to="/profile"><span className="text-white text-3xl font-medium">{userData.name}</span></Link>
-                                <Link to="/booking"><LuCalendarClock className='text-3xl' /></Link>
+                                <Link to="/dealer/profile"><span className="text-white text-3xl font-medium">{dealerData.name}</span></Link>
                                 <button onClick={handleLogout} className="text-[#410512] bg-white font-semibold px-4 py-1 rounded text-3xl cursor-pointer">
                                     Logout
                                 </button>
                             </div>) : (
-                            <>
-                                <Link to="/login">
-                                    <button className="bg-yellow-400 text-black font-semibold px-4 rounded hover:bg-yellow-500 text-3xl transition">
-                                        Join Us
-                                    </button>
-                                </Link>
-                                <Link to="/admin">
-                                    <RiAdminLine className='absolute top-5 right-5' />
-                                </Link>
-                            </>
-                        )
+                            <Link to="/dealer/login">
+                                <button className="bg-yellow-400 text-black font-semibold px-4 rounded hover:bg-yellow-500 text-3xl transition">
+                                    Join Us
+                                </button>
+                            </Link>)
 
                         }
                     </div>
-
                 </div>
 
                 {click && content}

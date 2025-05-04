@@ -79,4 +79,3 @@ function CarCards({ car }) {
 }
 
 export default CarCards
-//onClick={() => bookCar(car._id)}

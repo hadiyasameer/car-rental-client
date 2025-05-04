@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { userSignUp } from '../../services/userServices'
+import { dealerSignUp } from '../../services/dealerServices';
 import { toast } from 'react-toastify';
 
-function SignUp() {
+function SignUp({ role = 'user' }) {
 
+    const navigate = useNavigate()
     const [values, setValues] = useState({
         name: '',
         email: '',
@@ -13,7 +15,8 @@ function SignUp() {
         confirmPassword: ''
 
     })
-    
+    const signUpFunction = role === 'dealer' ? dealerSignUp : userSignUp;
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setValues((prevValues) => ({
@@ -21,27 +24,25 @@ function SignUp() {
             [name]: value
         }));
     };
-    const navigate = useNavigate()
     const onSubmit = (e) => {
         e.preventDefault()
-        userSignUp(values).then((res) => {
-            console.log(res);
-            toast.success("Signup successful")
+        signUpFunction(values).then((res) => {
+            toast.success(`${role === 'dealer' ? 'Dealer' : 'User'} signup successful`);
             navigate("/");
         }).catch((err) => {
-            console.log(err);
-            console.log(values, "values")
             toast.error(err?.response?.data?.message || "Signup failed", {
                 position: "top-center"
-            })
-        })
+            });
+        });
     }
     return (
         <div className='p-5'>
             <div className="hero bg-base-200 ">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left w-auto ">
-                        <h1 className="text-5xl font-bold whitespace-nowrap">Sign Up now!</h1>
+                        <h1 className="text-5xl font-bold whitespace-nowrap">
+                            {role === 'dealer' ? 'Register as a Dealer!' : 'Sign Up now!'}
+                        </h1>
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <form className="card-body" onSubmit={onSubmit}>

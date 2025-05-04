@@ -5,8 +5,10 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../services/userServices';
 import { adminLogin } from '../../services/adminServices';
+import { dealerLogin } from '../../services/dealerServices';
 import { saveUser } from '../../redux/features/userSlice';
 import { saveAdmin } from '../../redux/features/adminSlice';
+import { saveDealer } from '../../redux/features/dealerSlice';
 
 function Login() {
 
@@ -26,10 +28,11 @@ function Login() {
     const dispatch = useDispatch()
     const location = useLocation()
     const isAdmin = location.pathname.includes('/admin')
+    const isDealer = location.pathname.includes('/dealer')
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const loginFunc = isAdmin ? adminLogin : userLogin;
+        const loginFunc = isAdmin ? adminLogin : isDealer ? dealerLogin : userLogin;
         loginFunc(values)
             .then((res) => {
                 toast.success("Login successful")
@@ -37,6 +40,10 @@ function Login() {
                     console.log("Admin login response:", res.data.data);
                     dispatch(saveAdmin(res.data.data));
                     navigate("/admin");
+                } else if (isDealer) {
+                    console.log("Dealer login response:", res.data.data);
+                    dispatch(saveDealer(res.data.data));
+                    navigate("/dealer");
                 } else {
                     dispatch(saveUser(res.data.data));
                     navigate("/");
@@ -55,7 +62,7 @@ function Login() {
             <div className="hero bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold whitespace-nowrap">{isAdmin ? 'Admin Login' : 'Login now!'}</h1>
+                        <h1 className="text-5xl font-bold whitespace-nowrap">{isAdmin ? 'Admin Login!' : isDealer ? 'Dealer Login!' : 'Login now!'}</h1>
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <form className="card-body" onSubmit={onSubmit}>
