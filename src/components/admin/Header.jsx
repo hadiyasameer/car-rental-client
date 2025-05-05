@@ -8,8 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { persister } from '../../redux/store';
 
 
+
 function Header() {
-    const adminData = useSelector((state) => state.admin.admin); // ✅ select admin
+    const adminData = useSelector((state) => state.admin.admin);
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
@@ -49,8 +50,25 @@ function Header() {
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
                     <Link to="/admin/bookings">Bookings</Link>
                 </li>
-            </ul>
-        </div>
+                <li>
+                    {adminData.email ? (
+                        <li className="my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded">
+                                <button onClick={()=>{handleLogout();setClick(false)}} className="text-[#410512] bg-white px-4 py-1 rounded ">
+                                    Logout
+                                </button>
+                        </li>) : (
+                        <li className="my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded">
+                            <Link to="/admin/login">
+                                <button onClick={() => setClick(false)} className="bg-yellow-400 text-black font-semibold px-4 rounded hover:bg-yellow-500 text-3xl transition">
+                                    Join Us
+                                </button>
+                            </Link>
+                        </li>
+                    )
+                    }
+            </li>
+        </ul>
+        </div >
     );
 
     return (
@@ -72,7 +90,7 @@ function Header() {
                                 <Link to="/admin/cars">Cars</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
-                            <Link to="/admin/bookings">Bookings</Link>
+                                <Link to="/admin/bookings">Bookings</Link>
                             </li>
                         </ul>
                     </div>
@@ -94,15 +112,14 @@ function Header() {
                             )}
                         </div>
                     </div>
-
-                    {click && content}
-
-                    <button className='block sm:hidden transition' onClick={handleClick}>
-                        {click ? <FaTimes /> : <MdOutlineMenu />}
-                    </button>
                 </div>
+                {click && content}
+
+                <button className='block sm:hidden transition' onClick={handleClick}>
+                    {click ? <FaTimes /> : <MdOutlineMenu />}
+                </button>
             </div>
-        </nav>
+        </nav >
     )
 }
 

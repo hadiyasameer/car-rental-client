@@ -28,7 +28,7 @@ function CarCards({ car }) {
     // }
 
     return (
-        <div className='m-10'>
+        <div className='lg:m-10'>
             <div className="card bg-base-100 w-96 shadow-sm grid grid-cols-1" >
                 <figure className='w-full h-80'>
                     <img

@@ -41,7 +41,7 @@ function Header() {
             localStorage.setItem("visited", "true");
         }
     }, []);
-    
+
 
     // mobile
     const content = (
@@ -59,6 +59,37 @@ function Header() {
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
                     <Link to="/dealer/about">About</Link>
                 </li>
+                {dealerData.email ? (
+                    <li
+                        onClick={() => setClick(false)}
+                        className="my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded flex items-center justify-center gap-6"
+                    >
+                        <Link to="/dealer/profile">
+                            <span className="text-white text-xl">{dealerData.name}</span>
+                        </Link>
+                        <Link to="/dealer/booking">
+                            <LuCalendarClock className="text-xl text-white" />
+                        </Link>
+                        <button
+                            onClick={handleLogout}
+                            className="text-[#410512] bg-white px-4 py-2 rounded text-lg font-medium"
+                        >
+                            Logout
+                        </button>
+                    </li>
+                ) : (
+                    <li
+                        onClick={() => setClick(false)}
+                        className="my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded"
+                    >
+                        <Link to="/dealer/login">
+                            <button className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded text-xl hover:bg-yellow-500 transition">
+                                Join Us
+                            </button>
+                        </Link>
+                    </li>
+                )}
+
             </ul>
         </div>
     );
@@ -68,7 +99,7 @@ function Header() {
             <div className='relative h-30 flex justify-between z-50 text-white lg:py-5 px-20 py-4 flex-1'>
                 <div className='flex items-center flex-1'>
                     <span className='text-4xl font-bold text-yellow-400'>
-                        <Link to="/dealer">RideQatar</Link>
+                        <Link to="/dealer">RideQatar Dealer</Link>
                     </span>
                 </div>
 
@@ -91,7 +122,7 @@ function Header() {
                         </ul>
                     </div>
                     <div className='nav-end gap-5'>
-                    {dealerData.email ? (
+                        {dealerData.email ? (
                             <div className="flex items-center gap-4">
                                 <Link to="/dealer/profile"><span className="text-white text-3xl font-medium">{dealerData.name}</span></Link>
                                 <button onClick={handleLogout} className="text-[#410512] bg-white font-semibold px-4 py-1 rounded text-3xl cursor-pointer">

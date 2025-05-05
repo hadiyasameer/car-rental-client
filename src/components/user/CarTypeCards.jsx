@@ -3,15 +3,16 @@ import { useNavigate } from 'react-router-dom';
 
 function CarTypeCards() {
   const navigate = useNavigate();
+  
 
   return (
-    <div className='flex flex-col lg:flex-row text-center justify-between mx-10'>
+    <div className='flex flex-col lg:flex-row text-center items-center justify-between lg:mx-10'>
       <div
-        onClick={() => navigate(`/cars/sedan`)}
+        onClick={() => navigate(`/car/sedan`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars/sedan`)}
-        className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-1/5"
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/car/sedan`)}
+        className="cursor-pointer w-2/3 bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 lg:w-1/5"
       >
         <img
           src="https://bestsellingcarsblog.com/wp-content/uploads/2024/05/Toyota-Yaris-Sedan-Saudi-Arabia-March-2024.jpg"
@@ -21,11 +22,11 @@ function CarTypeCards() {
         <h3 className="mt-4 text-xl font-bold text-[#410512]">Sedan</h3>
       </div>
       <div
-        onClick={() => navigate(`/cars/suv`)}
+        onClick={() => navigate(`/car/suv`)  }
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars/suv`)}
-        className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-1/5"
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/car/suv`)}
+        className="cursor-pointer bg-white w-2/3 rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500  lg:w-1/5"
       >
         <img
           src="https://d1hv7ee95zft1i.cloudfront.net/custom/blog-post-photo/gallery/toyota-fortuner-630f315461ab8.jpg"
@@ -36,11 +37,12 @@ function CarTypeCards() {
       </div>
 
       <div
-        onClick={() => navigate(`/cars/offroad`)}
+        onClick={() => navigate(`/car/offroad`)
+        }
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars/offroad`)}
-        className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-1/5"
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/car/offroad`)}
+        className="cursor-pointer w-2/3 bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 lg:w-1/5"
       >
         <img
           src="https://cdn.motor1.com/images/mgl/nxN0o/s1/rezvani-tank-x.webp"
@@ -50,11 +52,11 @@ function CarTypeCards() {
         <h3 className="mt-4 text-xl font-bold text-[#410512]">Offroad</h3>
       </div>
       <div
-        onClick={() => navigate(`/cars/luxury`)}
+        onClick={() => navigate(`/car/luxury`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars/luxury`)}
-        className="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 w-1/5"
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/car/luxury`)}
+        className="cursor-pointer w-2/3 bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 lg:w-1/5"
       >
         <img
           src="https://m.economictimes.com/photo/31045699.cms"

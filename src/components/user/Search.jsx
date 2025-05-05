@@ -43,7 +43,7 @@ function Search() {
         console.log('Filters:', filters);
     }
     return (
-        <div className='w-full max-w-7xl mx-auto my-10 border-8 rounded-lg text-[#410512] px-4 sm:px-8 py-6'>
+        <div className='w-full max-w-7xl mx-auto my-10 border-8 bg-white rounded-lg text-[#410512] px-4 sm:px-8 py-6'>
             <div className='text-center text-4xl font-bold my-7'>I'm looking for</div>
             <div className='flex flex-col md:flex-row flex-wrap gap-8 justify-center text-center my-10'>
                 <div className='flex flex-col'>

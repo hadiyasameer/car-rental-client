@@ -6,14 +6,17 @@ import { useParams } from 'react-router-dom'
 
 function Cars() {
 
-  const {carType}=useParams()
+  const { carType } = useParams()
   const [cars, setCars] = useState([])
 
   useEffect(() => {
-    carlist(carType).then((res) => {
-      console.log("fetched cars",res.data)
-      setCars(res.data)
-    }).catch((err) => console.log(err))
+    if (carType) {
+      carlist({ carType }).then((res) => {
+        console.log("fetched cars", res.data)
+        setCars(res.data)
+      }).catch((err) => console.log(err))
+    }
+
   }, [carType])
 
   return (

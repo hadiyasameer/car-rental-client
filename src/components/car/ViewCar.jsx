@@ -52,14 +52,14 @@ function ViewCar() {
   if (!car) return <div>Loading...</div>;
 
   return (
-    <div className="p-10">
-      <div className='flex'>
+    <div className="lg:p-10">
+      <div className='flex flex-col lg:flex-row'>
         <div >
           <h1 className="text-3xl font-bold w-full m-10">{car.title}</h1>
           <figure className='flex-1  w-200'>
             <img
               src={car.image}
-              alt="Cars" className='relative object-cover w-3/4 h-full' />
+              alt="Cars" className='relative object-cover w-1/2 lg:w-3/4 h-full' />
           </figure>
           <div className="flex justify-between w-3/4">
             <div className="group">
@@ -91,7 +91,7 @@ function ViewCar() {
             <h2 className='text-3xl '>Description:</h2>
             <p className='2xl'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste pariatur reiciendis rem nulla soluta cupiditate, nobis velit laborum voluptatum est officia, itaque error omnis quos sapiente doloribus. Illum natus voluptas rerum est! Hic laboriosam dolorum incidunt facere unde, accusantium libero, quam, ut enim optio totam? Illum laborum ea veniam sunt.</p>
           </div>
-          <div>
+          <div className='flex flex-col items-center'>
             <p className="text-lg mb-4">{car.make} - {car.pricePerDay}/day</p>
             {!isAdmin && (
               <>

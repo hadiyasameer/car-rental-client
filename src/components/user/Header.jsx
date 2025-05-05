@@ -61,6 +61,44 @@ function Header() {
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
                     <Link to="Contact">Contact</Link>
                 </li>
+                {userData.email ? (
+                    <li
+                        onClick={() => setClick(false)}
+                        className="my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded flex items-center justify-center gap-4"
+                    >
+                        <Link to="/profile">
+                            <span className="text-white text-xl">{userData.name}</span>
+                        </Link>
+                        <Link to="/booking">
+                            <LuCalendarClock className="text-xl text-white" />
+                        </Link>
+                        <button
+                            onClick={handleLogout}
+                            className="text-[#410512] bg-white px-4 py-1 rounded text-lg font-medium"
+                        >
+                            Logout
+                        </button>
+                    </li>
+                ) : (
+                    <>
+                        <li
+                            onClick={() => setClick(false)}
+                            className="my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded"
+                        >
+                            <Link to="/login">
+                                <button className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded text-xl hover:bg-yellow-500 transition">
+                                    Join Us
+                                </button>
+                            </Link>
+                        </li>
+                        <li className="absolute top-5 right-5">
+                            <Link to="/admin">
+                                <RiAdminLine className="text-white text-2xl" />
+                            </Link>
+                        </li>
+                    </>
+                )}
+
             </ul>
         </div>
     );
