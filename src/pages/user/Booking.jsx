@@ -37,7 +37,7 @@ function Booking() {
     try {
       console.log("Booking details being sent:", singleBooking);
   
-      const response = await makepaymentOnStripe({ bookings: [singleBooking] }); // Correct shape
+      const response = await makepaymentOnStripe({ bookings: [singleBooking] }); 
       console.log("Payment session response:", response);
       const stripe = await stripePromise;
   
