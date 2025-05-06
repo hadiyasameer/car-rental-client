@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Search() {
+function SearchCars() {
     const navigate = useNavigate()
 
     const [minPrice, setMinPrice] = useState('');
@@ -127,4 +127,4 @@ function Search() {
     )
 }
 
-export default Search
+export default SearchCars
