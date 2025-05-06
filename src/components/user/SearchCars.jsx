@@ -14,8 +14,8 @@ function SearchCars() {
     const [selectedModel, setSelectedModel] = useState('');
     const models = Array.from({ length: 2025 - 2018 + 1 }, (_, i) => 2018 + i);
 
-    const [selectedLocation, setSelectedLocation] = useState('');
-    const locations = ['Doha', 'Wakrah', 'Al Wukair', 'Ain Khaled', 'Mesaeidd', 'Al Sadd', 'Al Thumama'];
+    // const [selectedLocation, setSelectedLocation] = useState('');
+    // const locations = ['Doha', 'Wakrah', 'Al Wukair', 'Ain Khaled', 'Mesaeidd', 'Al Sadd', 'Al Thumama'];
 
     const handleMakeChange = (event) => {
         setSelectedMake(event.target.value);
@@ -23,14 +23,14 @@ function SearchCars() {
     const handleModelChange = (event) => {
         setSelectedModel(event.target.value);
     };
-    const handleLocationChange = (event) => {
-        setSelectedLocation(event.target.value);
-    };
+    // const handleLocationChange = (event) => {
+    //     setSelectedLocation(event.target.value);
+    // };
     const handleSearch = () => {
         const filters = {
             make: selectedMake,
             model: selectedModel,
-            location: selectedLocation,
+            // location: selectedLocation,
             minPrice: minPrice.trim(),
             maxPrice: maxPrice.trim()
         };
@@ -97,7 +97,7 @@ function SearchCars() {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col'>
+                {/* <div className='flex flex-col'>
                     <label htmlFor="location" className='text-3xl mb-8'>Location</label>
                     <select name="location" id="location" value={selectedLocation} onChange={handleLocationChange} className="py-2 px-4 border-1 min-w-[200px] solid bg-white rounded-md text-black">
                         <option value="" disabled>
@@ -114,7 +114,7 @@ function SearchCars() {
                             You selected: {selectedLocation}
                         </div>
                     )}
-                </div>
+                </div> */}
             </div>
             <div className="flex justify-center mt-8">
                 <button onClick={handleSearch} className="bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition">

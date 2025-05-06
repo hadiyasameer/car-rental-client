@@ -8,10 +8,10 @@ function CarTypeCards() {
   return (
     <div className='flex flex-col lg:flex-row text-center items-center justify-between lg:mx-10'>
       <div
-        onClick={() => navigate(`/car/sedan`)}
+        onClick={() => navigate(`/cars?carType=sedan`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/car/sedan`)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars?carType=sedan`)}
         className="cursor-pointer w-2/3 bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 lg:w-1/5"
       >
         <img
@@ -22,10 +22,10 @@ function CarTypeCards() {
         <h3 className="mt-4 text-xl font-bold text-[#410512]">Sedan</h3>
       </div>
       <div
-        onClick={() => navigate(`/car/suv`)  }
+        onClick={() => navigate(`/cars?carType=suv`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/car/suv`)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars?carType=suv`)}
         className="cursor-pointer bg-white w-2/3 rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500  lg:w-1/5"
       >
         <img
@@ -37,11 +37,10 @@ function CarTypeCards() {
       </div>
 
       <div
-        onClick={() => navigate(`/car/offroad`)
-        }
+        onClick={() => navigate(`/cars?carType=offroad`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/car/offroad`)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars?carType=offroad`)}
         className="cursor-pointer w-2/3 bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 lg:w-1/5"
       >
         <img
@@ -52,10 +51,10 @@ function CarTypeCards() {
         <h3 className="mt-4 text-xl font-bold text-[#410512]">Offroad</h3>
       </div>
       <div
-        onClick={() => navigate(`/car/luxury`)}
+        onClick={() => navigate(`/cars?carType=luxury`)}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/car/luxury`)}
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate(`/cars?carType=luxury`)}
         className="cursor-pointer w-2/3 bg-white rounded-lg shadow-md hover:shadow-xl transition-all p-4 focus:outline-none focus:ring-2 focus:ring-yellow-500 lg:w-1/5"
       >
         <img
