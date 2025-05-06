@@ -11,8 +11,8 @@ function SearchCars() {
     const [selectedMake, setSelectedMake] = useState('');
     const carMakes = ['Toyota', 'BMW', 'Mercedes', 'Audi', 'Honda', 'Ford', 'Chevrolet', 'Nissan', 'Hyundai',];
 
-    const [selectedModel, setSelectedModel] = useState('');
-    const models = Array.from({ length: 2025 - 2018 + 1 }, (_, i) => 2018 + i);
+    // const [selectedModel, setSelectedModel] = useState('');
+    // const models = Array.from({ length: 2025 - 2018 + 1 }, (_, i) => 2018 + i);
 
     // const [selectedLocation, setSelectedLocation] = useState('');
     // const locations = ['Doha', 'Wakrah', 'Al Wukair', 'Ain Khaled', 'Mesaeidd', 'Al Sadd', 'Al Thumama'];
@@ -20,16 +20,16 @@ function SearchCars() {
     const handleMakeChange = (event) => {
         setSelectedMake(event.target.value);
     };
-    const handleModelChange = (event) => {
-        setSelectedModel(event.target.value);
-    };
+    // const handleModelChange = (event) => {
+    //     setSelectedModel(event.target.value);
+    // };
     // const handleLocationChange = (event) => {
     //     setSelectedLocation(event.target.value);
     // };
     const handleSearch = () => {
         const filters = {
             make: selectedMake,
-            model: selectedModel,
+            // model: selectedModel,
             // location: selectedLocation,
             minPrice: minPrice.trim(),
             maxPrice: maxPrice.trim()
@@ -39,7 +39,7 @@ function SearchCars() {
             if (value) queryParams.append(key, value);
         });
 
-        navigate(`/cars?${queryParams.toString()}`);
+        navigate(`/filter?${queryParams.toString()}`);
         console.log('Filters:', filters);
     }
     return (
@@ -64,7 +64,7 @@ function SearchCars() {
                         </div>
                     )}
                 </div>
-                <div className='flex flex-col'>
+                {/* <div className='flex flex-col'>
                     <label htmlFor="model" className='text-3xl mb-8'>Model</label>
                     <select name="model" id="model" value={selectedModel} onChange={handleModelChange} className="py-2 px-4 min-w-[200px] border-1 solid bg-white rounded-md text-black">
                         <option value="" disabled>
@@ -81,7 +81,7 @@ function SearchCars() {
                             You selected: {selectedModel}
                         </div>
                     )}
-                </div>
+                </div> */}
                 <div className='flex flex-col'>
                     <h3 className='text-3xl'>Price</h3>
                     <div className='flex lg:flex-row flex-col'>

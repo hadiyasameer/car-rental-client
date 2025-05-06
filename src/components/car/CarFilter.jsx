@@ -1,59 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import CarCards from '../../components/car/CarCards'
-import { axiosInstance } from '../../axios/axiosinstance'
-import { carlist } from '../../services/userServices'
-import { useLocation, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { carlist } from '../../services/userServices'; // adjust path if needed
+import CarCards from '../../components/car/CarCards';
 
-function Cars() {
+function CarFilter() {
+    const [cars, setCars] = useState([]);
+    const location = useLocation();
 
-  const { carType } = useParams()
-  const [cars, setCars] = useState([])
-  const location = useLocation();
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const filters = {
+            carType: searchParams.get('carType') || '',
+            make: searchParams.get('make') || '',
+            // model: searchParams.get('model') || '',
+            minPrice: searchParams.get('minPrice') || '',
+            maxPrice: searchParams.get('maxPrice') || '',
+        };
 
+        // Clean up empty filters
+        Object.keys(filters).forEach(key => {
+            if (!filters[key]) delete filters[key];
+        });
 
-  useEffect(() => {
-    const trimmedType = carType?.trim();
-    if (trimmedType) {
-      fetchCarsByType(trimmedType);
-    } else {
-      fetchCarsBySearchFilters();
-    }
-  }, [carType, location.search]);
+        carlist(filters)
+            .then(res => setCars(res.data))
+            .catch(err => console.log(err));
+    }, [location.search]);
 
-  const fetchCarsByType = (type) => {
-    carlist({ carType: type })
-      .then((res) => {
-        console.log('Filtered by carType:', res.data);
-        setCars(res.data);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  const fetchCarsBySearchFilters = () => {
-    const searchParams = new URLSearchParams(location.search);
-    const filters = {};
-
-    for (const [key, value] of searchParams.entries()) {
-      if (value.trim()) filters[key] = value.trim();
-    }
-
-    carlist(filters)
-      .then((res) => {
-        console.log('Filtered by search filters:', res.data);
-        setCars(res.data);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  return (
-    <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
-      {
-        cars && cars.map((car, i) => (
-          <CarCards key={i} car={car} />
-        ))
-      }
-    </div>
-  )
+    return (
+        // <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+        //     <div className='w-full max-w-7xl mx-auto my-10 px-4 sm:px-8'>
+        //         <h2 className='text-3xl font-bold mb-6'>Filtered Cars</h2>
+        //         {cars.length === 0 ? (
+        //             <p className="text-xl text-center text-gray-600">No cars found matching your criteria.</p>
+        //         ) : (
+        //             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+        //                 {cars.map((car, i) => (
+        //                     <CarCards key={i} car={car} />
+        //                 ))}
+        //             </div>
+        //         )}
+        //     </div>
+        // </div>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+            {
+                cars && cars.map((car, i) => (
+                    <CarCards key={i} car={car} />
+                ))
+            }
+        </div>
+    );
 }
 
-export default Cars
+export default CarFilter;
