@@ -32,7 +32,7 @@ function SignUp() {
         e.preventDefault()
         signUpFunction(values).then((res) => {
             toast.success(`${role === 'dealer' ? 'Dealer' : 'User'} signup successful`);
-            navigate("/");
+            navigate(role === 'dealer' ? '/dealer/login' : '/login');
         }).catch((err) => {
             toast.error(err?.response?.data?.message || "Signup failed", {
                 position: "top-center"
