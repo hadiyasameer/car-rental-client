@@ -1,8 +1,6 @@
-// src/components/BookingSuccess/BookingSuccess.jsx
-
 import React, { useEffect } from 'react';
-import { clearBookings } from '../../services/userServices'; // Import the clean function
-import { useNavigate } from 'react-router-dom'; // Assuming you're using react-router for navigation
+import { clearBookings } from '../../services/userServices'; 
+import { useNavigate } from 'react-router-dom'; 
 
 function BookingSuccess() {
   const navigate = useNavigate();
@@ -11,16 +9,16 @@ function BookingSuccess() {
     const bookingId = new URLSearchParams(location.search).get("bookingId");
 
     if (bookingId) {
-      clearBookings(bookingId)  // Use the clearBookings function from userServices
+      clearBookings(bookingId)  
         .then(() => {
           console.log("Booking cleared after payment");
-          navigate("payment/success"); // Refresh or redirect to bookings page
+          navigate("/"); 
         })
         .catch(err => {
           console.error("Failed to clear booking:", err);
         });
     }
-  }, [navigate]); // Adding navigate to the dependency array
+  }, [navigate]); 
 
   return (
     <div className="text-center p-10">
