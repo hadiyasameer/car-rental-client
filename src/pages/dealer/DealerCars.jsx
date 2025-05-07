@@ -38,39 +38,43 @@ const DealerCars = () => {
             }
         }
     };
-    
-    
+
+
     if (loading) return <div className="text-center mt-10">Loading cars...</div>;
 
-    if (cars.length === 0) return <div className="text-center mt-10">No cars added yet.</div>;
-
-
     return (
-        <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <h1>Hii Your  Cars</h1>
-            {cars.map((car) => (
-                <div key={car._id} className="bg-white rounded-2xl shadow-md p-4">
-                    <img src={car.image} alt={car.title} className="w-full h-48 object-cover rounded-xl mb-4" />
-                    <h2 className="text-xl font-semibold">{car.title}</h2>
-                    <p className="text-gray-600">{car.make} - {car.model} ({car.year})</p>
-                    <p className="text-green-600 font-medium">QR{car.pricePerDay} / day</p>
-                    <p className="text-sm text-gray-500 mt-1">{car.location}</p>
-                    <div className="flex gap-2 mt-4">
-                        <Link to={`/dealer/updatecar/${car._id}`} className="text-blue-600 hover:underline text-sm">Edit</Link>
-                        <button onClick={() => handleDelete(car._id)} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
-                            Delete Car
+        <div className="p-6">
+            {cars.length === 0 ? (
+                <div className="text-center mt-10">
+                    <p>No cars added yet.</p>
+                    <Link to="/dealer/addcar">
+                        <button className="bg-yellow-400 text-black font-semibold px-4 rounded hover:bg-yellow-500 text-3xl transition mt-4">
+                            Add Car
                         </button>
-                    </div>
+                    </Link>
                 </div>
-            ))}
-            <h2>Not added yet...</h2>
-            <Link to="/dealer/addcar">
-                <button className="bg-yellow-400 text-black font-semibold px-4 rounded hover:bg-yellow-500 text-3xl transition">
-                    Add Car
-                </button>
-            </Link>
+            ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <h1>Hii Your  Cars</h1>
+                    {cars.map((car) => (
+                        <div key={car._id} className="bg-white rounded-2xl shadow-md p-4">
+                            <img src={car.image} alt={car.title} className="w-full h-48 object-cover rounded-xl mb-4" />
+                            <h2 className="text-xl font-semibold">{car.title}</h2>
+                            <p className="text-gray-600">{car.make} - {car.model} ({car.year})</p>
+                            <p className="text-green-600 font-medium">QR{car.pricePerDay} / day</p>
+                            <p className="text-sm text-gray-500 mt-1">{car.location}</p>
+                            <div className="flex gap-2 mt-4">
+                                <Link to={`/dealer/updatecar/${car._id}`} className="text-blue-600 hover:underline text-sm">Edit</Link>
+                                <button onClick={() => handleDelete(car._id)} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
+                                    Delete Car
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
-};
+}
 
 export default DealerCars;
