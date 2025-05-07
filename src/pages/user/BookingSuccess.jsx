@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function BookingSuccess() {
   const navigate = useNavigate();
-
+  const location = useLocation()
   useEffect(() => {
     const bookingId = new URLSearchParams(location.search).get("bookingId");
 
@@ -12,13 +12,12 @@ function BookingSuccess() {
       clearBookings(bookingId)  
         .then(() => {
           console.log("Booking cleared after payment");
-          navigate("/"); 
         })
         .catch(err => {
           console.error("Failed to clear booking:", err);
         });
     }
-  }, [navigate]); 
+  }, [location.search]); 
 
   return (
     <div className="text-center p-10">
