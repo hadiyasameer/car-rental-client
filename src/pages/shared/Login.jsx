@@ -78,7 +78,8 @@ function Login() {
                             <button className="form-control btn btn-neutral mt-4" >Login</button>
                             {!isAdmin && (
                                 <div className='text-center'>
-                                    Join us today!<Link to="/signup" className='text-blue-600 underline px-3'>Sign Up</Link>
+                                    Join us today!
+                                    <Link to={isDealer ? "/dealer/signup" : "/signup"}  className='text-blue-600 underline px-3'>Sign Up</Link>
                                 </div>
                             )}
                         </form>
