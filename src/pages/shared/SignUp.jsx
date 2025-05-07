@@ -32,7 +32,7 @@ function SignUp() {
         e.preventDefault()
         signUpFunction(values).then((res) => {
             toast.success(`${role === 'dealer' ? 'Dealer' : 'User'} signup successful`);
-            navigate(isDealer ? "/dealer/login" : "/login");
+            navigate("/");
         }).catch((err) => {
             toast.error(err?.response?.data?.message || "Signup failed", {
                 position: "top-center"
@@ -74,7 +74,7 @@ function SignUp() {
                             <button className="form-control btn btn-neutral mt-4" >Sign Up</button>
                             <div className='text-center'>
                                 Already a member?
-                                <Link to={isDealer ? "/dealer/login" : "/login"} className='text-blue-600 underline px-3'>Login</Link>
+                                <Link to={role === 'dealer' ? "/dealer/login" : "/login"} className='text-blue-600 underline px-3'></Link>
                             </div>
                         </form>
                     </div>

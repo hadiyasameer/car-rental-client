@@ -10,6 +10,7 @@ import { saveUser } from '../../redux/features/userSlice';
 import { saveAdmin } from '../../redux/features/adminSlice';
 import { saveDealer } from '../../redux/features/dealerSlice';
 
+
 function Login() {
 
     const [values, setValues] = useState({
@@ -17,19 +18,19 @@ function Login() {
         password: ''
     })
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setValues((prevValues) => ({
-            ...prevValues,
-            [name]: value
-        }));
-    };
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const location = useLocation()
     const isAdmin = location.pathname.includes('/admin')
     const isDealer = location.pathname.includes('/dealer')
-
+    
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setValues((prevValues) => ({
+          ...prevValues,
+          [name]: value,
+        }));
+      };
     const onSubmit = (e) => {
         e.preventDefault()
         const loginFunc = isAdmin ? adminLogin : isDealer ? dealerLogin : userLogin;
@@ -79,7 +80,8 @@ function Login() {
                             {!isAdmin && (
                                 <div className='text-center'>
                                     Join us today!
-                                    <Link to={isDealer ? "/dealer/signup" : "/signup"}  className='text-blue-600 underline px-3'>Sign Up</Link>
+                                    <Link to={isDealer ? "/dealer/signup" : "/signup"} className='text-blue-600 underline px-3'>Sign Up</Link>
+
                                 </div>
                             )}
                         </form>

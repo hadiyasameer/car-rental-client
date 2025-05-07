@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "signup",
-                element: <SignUp />
+                element: <SignUp role="user"/>
             },
             {
                 path: "profile",
@@ -125,7 +125,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "signup",
-                element: <SignUp />
+                element: <SignUp role="dealer"/>
             },
             {
                 path: "carlist",
