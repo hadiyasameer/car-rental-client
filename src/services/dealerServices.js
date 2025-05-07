@@ -11,7 +11,7 @@ export const dealerLogout = () => {
 }
 
 export const dealercarlist = () => {
-    return axiosInstance.get("car/carlist");
+    return axiosInstance.get(`car/carlist?dealerId=${dealerId}`);
 };
 export const addcar = (data) => {
     return axiosInstance.post("car/addcar", data)

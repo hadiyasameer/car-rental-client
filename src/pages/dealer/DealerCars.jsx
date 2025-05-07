@@ -14,7 +14,7 @@ const DealerCars = () => {
     useEffect(() => {
         const fetchDealerCars = async () => {
             try {
-                const response = await dealercarlist();
+                const response = await dealercarlist(dealerId);
                 const filteredCars = response.data.filter(
                     (car) => (typeof car.dealer === "string" ? car.dealer : car.dealer?._id) === dealerId
                 );
