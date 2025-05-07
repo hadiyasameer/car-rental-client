@@ -14,8 +14,9 @@ const DealerCars = () => {
     useEffect(() => {
         const fetchDealerCars = async () => {
             try {
-                const response = await dealercarlist("", dealerId);
-                setCars(response.data);
+                const response = await dealercarlist();
+                const filteredCars = response.data.filter((car) => car.dealer === dealerId);
+                setCars(filteredCars);
             } catch (error) {
                 console.error("Failed to fetch dealer cars", error);
             } finally {
