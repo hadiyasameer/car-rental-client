@@ -15,7 +15,9 @@ const DealerCars = () => {
         const fetchDealerCars = async () => {
             try {
                 const response = await dealercarlist();
-                const filteredCars = response.data.filter((car) => car.dealer === dealerId);
+                const filteredCars = response.data.filter(
+                    (car) => (typeof car.dealer === "string" ? car.dealer : car.dealer?._id) === dealerId
+                );
                 setCars(filteredCars);
             } catch (error) {
                 console.error("Failed to fetch dealer cars", error);
