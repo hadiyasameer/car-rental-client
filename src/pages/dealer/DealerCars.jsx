@@ -47,6 +47,7 @@ const DealerCars = () => {
 
     return (
         <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h1>Hii Your  Cars</h1>
             {cars.map((car) => (
                 <div key={car._id} className="bg-white rounded-2xl shadow-md p-4">
                     <img src={car.image} alt={car.title} className="w-full h-48 object-cover rounded-xl mb-4" />
@@ -62,6 +63,7 @@ const DealerCars = () => {
                     </div>
                 </div>
             ))}
+            <h2>Not added yet...</h2>
             <Link to="/dealer/addcar">
                 <button className="bg-yellow-400 text-black font-semibold px-4 rounded hover:bg-yellow-500 text-3xl transition">
                     Add Car
