@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { clearBookings } from '../../services/userServices'; 
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate , useLocation} from 'react-router-dom'; 
 
 function BookingSuccess() {
   const navigate = useNavigate();
