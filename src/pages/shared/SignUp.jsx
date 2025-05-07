@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { userSignUp } from '../../services/userServices'
 import { dealerSignUp } from '../../services/dealerServices';
 import { toast } from 'react-toastify';
 
-function SignUp({ role = 'user' }) {
+function SignUp() {
+
+    const location = useLocation();
+    const isDealer = location.pathname.includes('/dealer');
+    const role = isDealer ? 'dealer' : 'user';
 
     const navigate = useNavigate()
     const [values, setValues] = useState({
@@ -28,7 +32,7 @@ function SignUp({ role = 'user' }) {
         e.preventDefault()
         signUpFunction(values).then((res) => {
             toast.success(`${role === 'dealer' ? 'Dealer' : 'User'} signup successful`);
-            navigate("/");
+            navigate(isDealer ? "/dealer/login" : "/login");
         }).catch((err) => {
             toast.error(err?.response?.data?.message || "Signup failed", {
                 position: "top-center"
@@ -69,7 +73,8 @@ function SignUp({ role = 'user' }) {
 
                             <button className="form-control btn btn-neutral mt-4" >Sign Up</button>
                             <div className='text-center'>
-                                Already a member?<Link to="/login" className='text-blue-600 underline px-3'>Login</Link>
+                                Already a member?
+                                <Link to={isDealer ? "/dealer/login" : "/login"} className='text-blue-600 underline px-3'>Login</Link>
                             </div>
                         </form>
                     </div>
