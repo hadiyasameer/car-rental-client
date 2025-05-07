@@ -10,7 +10,7 @@ export const dealerLogout = () => {
     return axiosInstance.get("dealer/logout", {}, { withCredentials: true });
 }
 
-export const dealercarlist = () => {
+export const dealercarlist = (dealerId) => {
     return axiosInstance.get(`car/carlist?dealerId=${dealerId}`);
 };
 export const addcar = (data) => {
