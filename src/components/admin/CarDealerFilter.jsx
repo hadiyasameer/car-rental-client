@@ -35,14 +35,16 @@ function CarDealerFilter() {
     };
     return (
         <div>
-            <select className='border px-3 py-2 rounded mb-4' value={selectedDealer} onChange={(e) => setSelectedDealer(e.target.value)}>
-                <option value="">All Dealers</option>
-                {dealers.map(dealer => (
-                    <option key={dealer._id} value={dealer._id}>
-                        {dealer.name}
-                    </option>
-                ))}
-            </select>
+            <div className="flex justify-center">
+                <select className='border px-3 py-2 rounded mb-4 ' value={selectedDealer} onChange={(e) => setSelectedDealer(e.target.value)}>
+                    <option value="">All Dealers</option>
+                    {dealers.map(dealer => (
+                        <option key={dealer._id} value={dealer._id}>
+                            {dealer.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {cars.map(car => (
                     <CarCards key={car._id} car={car} />
