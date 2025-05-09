@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { axiosInstance } from '../../axios/axiosinstance';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { addcar } from '../../services/dealerServices';
 
 const AddCar = () => {
     const navigate = useNavigate();
+
+    const carMakes = ['Toyota', 'BMW', 'Mercedes Benz', 'Audi', 'Honda', 'Ford', 'Chevrolet', 'Nissan', 'Hyundai'];
+    const years = Array.from({ length: 2025 - 2018 + 1 }, (_, i) => 2018 + i);
+    const carTypes = ['sedan', 'SUV', 'offroad', 'luxury'];
+    const fuelTypes = ['petrol', 'diesel', 'electric', 'hybrid'];
+    const transmissions = ['manual', 'automatic'];
+    const locations = ['Doha', 'Wakrah', 'Al Wukair', 'Ain Khaled', 'Mesaeidd', 'Al Sadd', 'Al Thumama'];
+
     const [values, setValues] = useState({
         title: '',
         make: '',
@@ -16,9 +23,9 @@ const AddCar = () => {
         transmission: '',
         seatingCapacity: '',
         pricePerDay: '',
-        availability: true,
         description: '',
-        location: ''
+        location: '',
+        availability: true,
     });
 
     const [image, setImage] = useState(null);
@@ -27,9 +34,9 @@ const AddCar = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setValues((prevValues) => ({
-            ...prevValues,
-            [name]: value
+        setValues((prev) => ({
+            ...prev,
+            [name]: value,
         }));
     };
 
@@ -38,7 +45,7 @@ const AddCar = () => {
     };
 
     const onSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         setLoading(true);
         setError('');
 
@@ -52,34 +59,160 @@ const AddCar = () => {
             await addcar(formData);
 
             toast.success('Car added successfully');
-            navigate("/dealer/carlist");
+            navigate('/dealer/carlist');
         } catch (err) {
-            toast.error(err?.response?.data?.message || "Car adding failed", {
-                position: "top-center"
+            toast.error(err?.response?.data?.message || 'Car adding failed', {
+                position: 'top-center',
             });
         } finally {
             setLoading(false);
         }
-    }
+    };
 
     return (
         <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow">
             <h2 className="text-2xl font-bold mb-6">Add New Car</h2>
             {error && <p className="text-red-500">{error}</p>}
             <form className="space-y-4" onSubmit={onSubmit}>
-                <input name="title" type='text' onChange={handleChange} placeholder="Car Title" required className="w-full border px-3 py-2 rounded" />
-                <input name="make" type='text' onChange={handleChange} placeholder="Make" required className="w-full border px-3 py-2 rounded" />
-                <input name="model" type='text' onChange={handleChange} placeholder="Model" required className="w-full border px-3 py-2 rounded" />
-                <input name="year" onChange={handleChange} placeholder="Year" type="number" required className="w-full border px-3 py-2 rounded" />
-                <input name="carType" type='text' onChange={handleChange} placeholder="Car Type" required className="w-full border px-3 py-2 rounded" />
-                <input name="fuelType" onChange={handleChange} placeholder="Fuel Type" required className="w-full border px-3 py-2 rounded" />
-                <input name="transmission" onChange={handleChange} placeholder="Transmission" required className="w-full border px-3 py-2 rounded" />
-                <input name="seatingCapacity" onChange={handleChange} placeholder="Seating Capacity" type="number" required className="w-full border px-3 py-2 rounded" />
-                <input name="pricePerDay" onChange={handleChange} placeholder="Price Per Day" type="number" required className="w-full border px-3 py-2 rounded" />
-                <textarea name="description" onChange={handleChange} placeholder="Description" className="w-full border px-3 py-2 rounded" />
-                <input name="location" type='text' onChange={handleChange} placeholder="Location" required className="w-full border px-3 py-2 rounded" />
-                <input type="file" onChange={handleImageChange} required className="w-full border px-3 py-2 rounded" />
-                <button disabled={loading} className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded">
+                <input
+                    name="title"
+                    type="text"
+                    value={values.title}
+                    onChange={handleChange}
+                    placeholder="Car Title"
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                />
+
+                <select
+                    name="make"
+                    value={values.make}
+                    onChange={handleChange}
+                    required
+                    className="w-full py-2 px-4 border bg-white rounded text-black"
+                >
+                    <option value="" disabled>Choose a make</option>
+                    {carMakes.map((make, index) => (
+                        <option key={index} value={make}>{make}</option>
+                    ))}
+                </select>
+
+                <input
+                    name="model"
+                    type="text"
+                    value={values.model}
+                    onChange={handleChange}
+                    placeholder="Model"
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                />
+
+                <select
+                    name="year"
+                    value={values.year}
+                    onChange={handleChange}
+                    required
+                    className="w-full py-2 px-4 border bg-white rounded text-black"
+                >
+                    <option value="" disabled>Choose year</option>
+                    {years.map((year, index) => (
+                        <option key={index} value={year}>{year}</option>
+                    ))}
+                </select>
+
+                <select
+                    name="carType"
+                    value={values.carType}
+                    onChange={handleChange}
+                    required
+                    className="w-full py-2 px-4 border bg-white rounded text-black"
+                >
+                    <option value="" disabled>Choose a Car Type</option>
+                    {carTypes.map((type, index) => (
+                        <option key={index} value={type}>{type}</option>
+                    ))}
+                </select>
+
+                <select
+                    name="fuelType"
+                    value={values.fuelType}
+                    onChange={handleChange}
+                    required
+                    className="w-full py-2 px-4 border bg-white rounded text-black"
+                >
+                    <option value="" disabled>Choose a fuel type</option>
+                    {fuelTypes.map((fuel, index) => (
+                        <option key={index} value={fuel}>{fuel}</option>
+                    ))}
+                </select>
+
+                <select
+                    name="transmission"
+                    value={values.transmission}
+                    onChange={handleChange}
+                    required
+                    className="w-full py-2 px-4 border bg-white rounded text-black"
+                >
+                    <option value="" disabled>Choose a transmission</option>
+                    {transmissions.map((t, index) => (
+                        <option key={index} value={t}>{t}</option>
+                    ))}
+                </select>
+
+                <input
+                    name="seatingCapacity"
+                    type="number"
+                    value={values.seatingCapacity}
+                    onChange={handleChange}
+                    placeholder="Seating Capacity"
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                />
+
+                <input
+                    name="pricePerDay"
+                    type="number"
+                    value={values.pricePerDay}
+                    onChange={handleChange}
+                    placeholder="Price Per Day"
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                />
+
+                <textarea
+                    name="description"
+                    value={values.description}
+                    onChange={handleChange}
+                    placeholder="Description"
+                    className="w-full border px-3 py-2 rounded"
+                />
+
+                <select
+                    name="location"
+                    value={values.location}
+                    onChange={handleChange}
+                    required
+                    className="w-full py-2 px-4 border bg-white rounded text-black"
+                >
+                    <option value="" disabled>Choose a location</option>
+                    {locations.map((loc, index) => (
+                        <option key={index} value={loc}>{loc}</option>
+                    ))}
+                </select>
+
+                <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    required
+                    className="w-full border px-3 py-2 rounded"
+                />
+
+                <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded"
+                >
                     {loading ? 'Uploading...' : 'Add Car'}
                 </button>
             </form>
