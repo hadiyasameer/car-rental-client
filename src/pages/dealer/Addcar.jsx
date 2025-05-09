@@ -25,7 +25,7 @@ const AddCar = () => {
         pricePerDay: '',
         description: '',
         location: '',
-        availability: true,
+        isAvailable: true,
     });
 
     const [image, setImage] = useState(null);

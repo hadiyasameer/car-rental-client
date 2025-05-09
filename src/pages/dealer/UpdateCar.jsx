@@ -9,7 +9,7 @@ const UpdateCar = () => {
     const [values, setValues] = useState({
         title: '',
         pricePerDay: '',
-        availability: true,
+        isAvailable: true,
         description: '',
         location: '',
     });
@@ -24,7 +24,7 @@ const UpdateCar = () => {
                 setValues({
                     title: car.title,
                     pricePerDay: car.pricePerDay,
-                    availability: car.availability,
+                    isAvailable: car.isAvailable,
                     description: car.description,
                     location: car.location,
                 });
@@ -52,7 +52,7 @@ const UpdateCar = () => {
         setLoading(true);
         try {
 
-            const updatedValues = { ...values, availability: Boolean(values.availability) };
+            const updatedValues = { ...values, isAvailable: Boolean(values.isAvailable) };
             const formData = new FormData();
             Object.entries(updatedValues).forEach(([key, val]) => {
                 formData.append(key, val);
@@ -82,7 +82,7 @@ const UpdateCar = () => {
                 <textarea name="description" value={values.description} onChange={handleChange} placeholder="Description" className="w-full border px-3 py-2 rounded" />
                 <input name="location" type="text" value={values.location} onChange={handleChange} placeholder="Location" required className="w-full border px-3 py-2 rounded" />
                 <label className="flex items-center space-x-2">
-                    <input type="checkbox" name="availability" checked={values.availability} onChange={handleChange} />
+                    <input type="checkbox" name="isAvailable" checked={values.isAvailable} onChange={handleChange} />
                     <span>Available</span>
                 </label>
                 <input type="file" onChange={handleImageChange} className="w-full border px-3 py-2 rounded" />
