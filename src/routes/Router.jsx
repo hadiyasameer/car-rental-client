@@ -21,6 +21,7 @@ import DealerProfile from "../pages/dealer/DealerProfile"
 import UpdateCar from "../pages/dealer/UpdateCar"
 import DealerBookings from "../pages/dealer/DealerBookings"
 import CarFilter from "../components/car/CarFilter"
+import CarDealerFilter from "../components/admin/CarDealerFilter"
 
 export const router = createBrowserRouter([
     {
@@ -90,7 +91,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "cars",
-                element: <Cars />
+                element: <CarDealerFilter />
             },
             {
                 path: "viewCar/:id",
