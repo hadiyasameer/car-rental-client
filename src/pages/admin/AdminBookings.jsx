@@ -27,7 +27,7 @@ function AdminBookings() {
               <th className="border p-2">Car</th>
               <th className="border p-2">Model</th>
               <th className="border p-2">Year</th>
-              <th className="border p-2">Price/Day</th>
+              <th className="border p-2">Total Price Paid</th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +38,7 @@ function AdminBookings() {
                 <td className="border p-2">{booking.carId?.make} {booking.carId?.title}</td>
                 <td className="border p-2">{booking.carId?.model}</td>
                 <td className="border p-2">{booking.carId?.year}</td>
-                <td className="border p-2">{booking.carId?.pricePerDay}</td>
+                <td className="border p-2">{booking.carId?.totalPrice}</td>
               </tr>
             ))}
           </tbody>
