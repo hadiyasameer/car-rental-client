@@ -68,7 +68,7 @@ const DealerCars = () => {
                             <p className="text-gray-600">{car.make} - {car.model} ({car.year})</p>
                             <p className="text-green-600 font-medium">QR{car.pricePerDay} / day</p>
                             <p className="text-sm text-gray-500 mt-1">{car.location}</p>
-                            <div className="flex gap-2 mt-4">
+                            <div className="flex justify-between mt-4">
                                 <Link to={`/dealer/updatecar/${car._id}`} className="text-blue-600 hover:underline text-sm">Edit</Link>
                                 <button onClick={() => handleDelete(car._id)} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                                     Delete Car

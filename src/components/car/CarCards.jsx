@@ -10,7 +10,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 function CarCards({ car }) {
 
-    const location=useLocation()
+    const location = useLocation()
     const isAdmin = location.pathname.startsWith('/admin');
 
     // const bookCar = (carId) => {
@@ -34,7 +34,11 @@ function CarCards({ car }) {
                     <img
                         src={car.image}
                         alt="Cars" className='relative object-cover w-full h-full' />
-                    <div className="absolute top-5 left-5 badge badge-secondary">Available</div>
+                    {car.isAvailable ? (
+                        <div className="absolute top-5 left-5 badge badge-success">Available</div>
+                    ) : (
+                        <div className="absolute top-5 left-5 badge badge-error">Unavailable</div>
+                    )}
                     <div className="absolute top-5 right-5 badge badge-secondary">New</div>
                 </figure>
                 <div className="card-body">
@@ -68,8 +72,8 @@ function CarCards({ car }) {
                         </div>
                     </div>
                     <div className='flex justify-end'>
-                    <Link to={`${isAdmin ? `/admin/viewcar/${car._id}` : `/viewcar/${car._id}`}`}>
-                    <button className='bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition' >View Now</button>
+                        <Link to={`${isAdmin ? `/admin/viewcar/${car._id}` : `/viewcar/${car._id}`}`}>
+                            <button className='bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition' >View Now</button>
                         </Link>
                     </div>
                 </div>
