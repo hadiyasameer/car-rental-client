@@ -16,5 +16,5 @@ export const viewCar = (carId) => {
     return axiosInstance.get(`car/ViewCar/${carId}`)
 }
 export const fetchDealers = () => {
-    return axiosInstance.get('/admin/dealers');
+    return axiosInstance.get('/admin/dealers',{ withCredentials: true });
 }
