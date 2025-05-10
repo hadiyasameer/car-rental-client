@@ -7,7 +7,7 @@ import { getDealerBookings } from '../../services/dealerServices';
 const DealerBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
-    const dealerId = useSelector((state) => state.dealer?.dealer?._id);      
+    const dealerId = useSelector((state) => state.dealer?.dealer?._id);
 
     useEffect(() => {
         getDealerBookings()
@@ -33,9 +33,10 @@ const DealerBookings = () => {
         <div className="p-6">
             <h1 className="text-3xl font-bold mb-4">All Bookings</h1>
             <div className="overflow-x-auto">
-                <table className="table-auto w-full border-collapse border border-gray-300">
+                <table className="table-auto w-full">
                     <thead>
                         <tr className="bg-gray-200">
+                            <th className="border p-2">Image</th>
                             <th className="border p-2">User</th>
                             <th className="border p-2">Email</th>
                             <th className="border p-2">Car</th>
@@ -47,6 +48,7 @@ const DealerBookings = () => {
                     <tbody>
                         {bookings.map((booking) => (
                             <tr key={booking._id}>
+                                <td className="border p-2">{booking.carId?.image}</td>
                                 <td className="border p-2">{booking.userId?.name || 'N/A'}</td>
                                 <td className="border p-2">{booking.userId?.email || 'N/A'}</td>
                                 <td className="border p-2">{booking.carId?.make} {booking.carId?.title}</td>
