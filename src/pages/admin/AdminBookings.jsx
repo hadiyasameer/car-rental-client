@@ -38,7 +38,7 @@ function AdminBookings() {
                 <td className="border p-2">{booking.carId?.make} {booking.carId?.title}</td>
                 <td className="border p-2">{booking.carId?.model}</td>
                 <td className="border p-2">{booking.carId?.year}</td>
-                <td className="border p-2">{booking.carId?.totalPrice}</td>
+                <td className="border p-2">{booking.totalPrice}</td>
               </tr>
             ))}
           </tbody>
