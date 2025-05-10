@@ -47,7 +47,7 @@ function CarCards({ car }) {
                         <h2 className="card-title ">
                             {car.title}
                         </h2>
-                        <p className='absolute right-5'><span className='font-bold text-xl'>{car.pricePerDay}</span>/day</p>
+                        <p className='absolute right-5'><span className='font-bold text-xl'>QR {car.pricePerDay}</span>/day</p>
                     </div>
                     <div className="h-[2px] bg-slate-200 mt-1"></div>
 
