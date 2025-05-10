@@ -26,20 +26,18 @@ function AdminBookings() {
               <th className="p-2">User</th>
               <th className="p-2">Email</th>
               <th className="p-2">Car</th>
-              <th className="p-2">Model</th>
-              <th className="p-2">Year</th>
+              <th className="p-2">Rental Days</th>
               <th className="p-2">Total Price Paid</th>
             </tr>
           </thead>
           <tbody>
             {bookings.map((booking) => (
               <tr key={booking._id}>
-                <td className="p-2"><img src={booking.carId ? booking.carId.image : '/placeholder-car.jpg'} alt="Car" className="object-cover w-24 h-16 mx-auto rounded"/></td>
+                <td className="p-2"><img src={booking.carId ? booking.carId.image : '/placeholder-car.jpg'} alt="Car" className="object-cover w-24 h-16 mx-auto rounded" /></td>
                 <td className="p-2 text-center">{booking.userId?.name || 'N/A'}</td>
                 <td className="p-2 text-center">{booking.userId?.email || 'N/A'}</td>
                 <td className="p-2 text-center">{booking.carId?.title}</td>
-                <td className="p-2 text-center">{booking.carId?.model}</td>
-                <td className="p-2 text-center">{booking.carId?.year}</td>
+                <td className="p-2 text-center">{booking.rentalDays}</td>
                 <td className="p-2 text-center">{booking.totalPrice}</td>
               </tr>
             ))}
