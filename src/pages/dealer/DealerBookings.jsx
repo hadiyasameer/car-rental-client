@@ -36,25 +36,25 @@ const DealerBookings = () => {
                 <table className="table-auto w-full">
                     <thead>
                         <tr className="bg-gray-200">
-                            <th className="border p-2">Image</th>
-                            <th className="border p-2">User</th>
-                            <th className="border p-2">Email</th>
-                            <th className="border p-2">Car</th>
-                            <th className="border p-2">Model</th>
-                            <th className="border p-2">Year</th>
-                            <th className="border p-2">Price/Day</th>
+                            <th className=" p-2">Image</th>
+                            <th className=" p-2">User</th>
+                            <th className=" p-2">Email</th>
+                            <th className=" p-2">Car</th>
+                            <th className=" p-2">Model</th>
+                            <th className=" p-2">Year</th>
+                            <th className=" p-2">Price/Day</th>
                         </tr>
                     </thead>
                     <tbody>
                         {bookings.map((booking) => (
                             <tr key={booking._id}>
-                                <td className="border p-2">{booking.carId?.image}</td>
-                                <td className="border p-2">{booking.userId?.name || 'N/A'}</td>
-                                <td className="border p-2">{booking.userId?.email || 'N/A'}</td>
-                                <td className="border p-2">{booking.carId?.make} {booking.carId?.title}</td>
-                                <td className="border p-2">{booking.carId?.model}</td>
-                                <td className="border p-2">{booking.carId?.year}</td>
-                                <td className="border p-2">{booking.carId?.pricePerDay}</td>
+                                <td className=" p-2"> <img src={booking.carId.image} alt="Cars" className='relative object-cover w-50 h-50' /></td>
+                                <td className=" p-2">{booking.userId?.name || 'N/A'}</td>
+                                <td className=" p-2">{booking.userId?.email || 'N/A'}</td>
+                                <td className=" p-2">{booking.carId?.make} {booking.carId?.title}</td>
+                                <td className=" p-2">{booking.carId?.model}</td>
+                                <td className=" p-2">{booking.carId?.year}</td>
+                                <td className=" p-2">{booking.carId?.pricePerDay}</td>
                             </tr>
                         ))}
                     </tbody>

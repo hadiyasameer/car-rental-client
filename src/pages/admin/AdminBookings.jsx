@@ -19,28 +19,28 @@ function AdminBookings() {
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-4">All Bookings</h1>
       <div className="overflow-x-auto">
-        <table className="table-auto w-full">
+        <table className="table-auto w-full border-0">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border p-2">Image</th>
-              <th className="border p-2">User</th>
-              <th className="border p-2">Email</th>
-              <th className="border p-2">Car</th>
-              <th className="border p-2">Model</th>
-              <th className="border p-2">Year</th>
-              <th className="border p-2">Total Price Paid</th>
+              <th className="p-2">Image</th>
+              <th className="p-2">User</th>
+              <th className="p-2">Email</th>
+              <th className="p-2">Car</th>
+              <th className="p-2">Model</th>
+              <th className="p-2">Year</th>
+              <th className="p-2">Total Price Paid</th>
             </tr>
           </thead>
           <tbody>
             {bookings.map((booking) => (
               <tr key={booking._id}>
-                <td className="border p-2">{booking.carId?.image}</td>
-                <td className="border p-2">{booking.userId?.name || 'N/A'}</td>
-                <td className="border p-2">{booking.userId?.email || 'N/A'}</td>
-                <td className="border p-2">{booking.carId?.title}</td>
-                <td className="border p-2">{booking.carId?.model}</td>
-                <td className="border p-2">{booking.carId?.year}</td>
-                <td className="border p-2">{booking.totalPrice}</td>
+                <td className="p-2"><img src={booking.carId.image} alt="Cars" className='relative object-cover w-50 h-50' /></td>
+                <td className="p-2">{booking.userId?.name || 'N/A'}</td>
+                <td className="p-2">{booking.userId?.email || 'N/A'}</td>
+                <td className="p-2">{booking.carId?.title}</td>
+                <td className="p-2">{booking.carId?.model}</td>
+                <td className="p-2">{booking.carId?.year}</td>
+                <td className="p-2">{booking.totalPrice}</td>
               </tr>
             ))}
           </tbody>
