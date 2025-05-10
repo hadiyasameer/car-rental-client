@@ -26,9 +26,9 @@ function About() {
         <span className='text-5xl text-[#410512] font-bold '>WHY CHOOSE US</span>
         <div className="w-1/6 h-[5px] bg-[#410512] mt-2"></div>
 
-        <div className='flex lg:flex-row flex-col gap-1 items-center lg:gap-10 p-5 lg:p-20'>
+        <div className='flex lg:flex-row flex-col gap-1 items-stretch lg:gap-10 p-5 lg:p-20'>
           <div className='flex flex-col gap-5 lg:gap-10 lg:w-1/3'>
-            <div className="relative lg:h-1/2 w-full">
+            <div className="relative flex-1 w-full">
               <img src="/images/image-2.jpg" alt="Car" className="h-full w-full object-cover rounded" />
               <div className="absolute inset-0 bg-black/50 z-0"></div>
               <h1 className='absolute top-4 left-4 text-white z-10 text-l lg:text-4xl font-bold'>01</h1>
@@ -43,7 +43,7 @@ function About() {
             </div>
           </div>
 
-          <div className="relative h-full lg:w-1/3">
+          <div className="relative h-full lg:w-1/3 aspect-[2/3]">
             <img src="/images/image-4.jpg" alt="Car" className="h-full w-full object-cover rounded" />
             <div className="absolute inset-0 bg-black/50 z-0"></div>
             <h3 className='absolute inset-0 flex items-center justify-center text-white z-10 text-xl lg:text-4xl font-bold text-center px-10'>"Drive Your Freedom, Your Way."</h3>
