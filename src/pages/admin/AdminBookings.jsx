@@ -34,7 +34,7 @@ function AdminBookings() {
           <tbody>
             {bookings.map((booking) => (
               <tr key={booking._id}>
-                <td className="p-2"><img src={booking.carId.image} alt="Cars" className='relative object-cover w-50 h-50' /></td>
+                <td className="p-2"><img src={booking.carId ? booking.carId.image : '/placeholder-car.jpg'} alt="Car" className="object-cover w-24 h-16 rounded"/></td>
                 <td className="p-2">{booking.userId?.name || 'N/A'}</td>
                 <td className="p-2">{booking.userId?.email || 'N/A'}</td>
                 <td className="p-2">{booking.carId?.title}</td>
