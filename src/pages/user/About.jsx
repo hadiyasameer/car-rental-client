@@ -32,7 +32,7 @@ function About() {
               <img src="/images/image-2.jpg" alt="Car" className="h-full w-full object-cover rounded" />
               <div className="absolute inset-0 bg-black/50 z-0"></div>
               <h1 className='absolute top-4 left-4 text-white z-10 text-l lg:text-4xl font-bold'>01</h1>
-              <h4 className='absolute inset-0 flex items-center justify-center text-white z-10 text-l lg:text-4xl font-bold text-center px-5 lg:px-10'>We provide 24/7 Roadside Assistance</h4>
+              <h4 className='absolute inset-0 flex items-center justify-center text-white z-10 text-l lg:text-3xl font-bold text-center px-5 lg:px-10'>We provide 24/7 Roadside Assistance</h4>
             </div>
             <div className="relative lg:h-1/2 w-full">
               <img src="/images/image-3.jpg" alt="Car" className="h-full w-full object-cover rounded" />
@@ -54,7 +54,7 @@ function About() {
               <img src="/images/image-6.jpg" alt="Car" className="h-full w-full object-cover rounded" />
               <div className="absolute inset-0 bg-black/50 z-0"></div>
               <h1 className='absolute top-4 left-4 text-white z-10 text-l lg:text-4xl font-bold'>03</h1>
-              <h4 className='absolute inset-0 flex items-center justify-center text-white z-10 text-l lg:text-4xl font-bold text-center px-3 lg:px-10'>Our rentals include Free Maintenance at no additional charge.</h4>
+              <h4 className='absolute inset-0 flex items-center justify-center text-white z-10 text-l lg:text-3xl font-bold text-center px-5 lg:px-10'>Our rentals include Free Maintenance at no additional charge.</h4>
 
             </div>
 
@@ -62,7 +62,7 @@ function About() {
               <img src="/images/image-8.jpg" alt="Car" className="h-full w-full object-cover rounded" />
               <div className="absolute inset-0 bg-black/50 z-0"></div>
               <h1 className='absolute top-4 left-4 text-white z-10 text-l lg:text-4xl font-bold'>04</h1>
-              <h4 className='absolute w-full inset-0 flex items-center justify-center text-white z-10 text-l lg:text-4xl font-bold text-center px-3 lg:px-10'>Our vehicle replacement ensures you’re never left stranded.</h4>
+              <h4 className='absolute w-full inset-0 flex items-center justify-center text-white z-10 text-l lg:text-3xl font-bold text-center px-5 lg:px-10'>Our vehicle replacement ensures you’re never left stranded.</h4>
 
             </div>
           </div>
