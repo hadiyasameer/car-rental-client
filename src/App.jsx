@@ -27,7 +27,7 @@ function App() {
 
         <button
           onClick={toggleDarkMode}
-          className="fixed top-3 lg:top-10 right-3 lg:right-4 w-9 h-9 lg:w-10 lg:h-10 flex justify-center items-center rounded-full bg-yellow-500 shadow-lg hover:bg-zinc-600 transition text-white text-lg"
+          className="fixed lg:top-20 right-3 lg:right-4 w-9 h-9 lg:w-10 lg:h-10 flex justify-center items-center rounded-full bg-yellow-500 shadow-lg hover:bg-zinc-600 transition text-white text-lg"
         >
           {darkMode ? <BsBrightnessHigh /> : <MdOutlineBrightness2 />}
         </button>
