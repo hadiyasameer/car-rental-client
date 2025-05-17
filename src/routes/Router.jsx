@@ -22,6 +22,8 @@ import UpdateCar from "../pages/dealer/UpdateCar"
 import DealerBookings from "../pages/dealer/DealerBookings"
 import CarFilter from "../components/car/CarFilter"
 import CarDealerFilter from "../components/admin/CarDealerFilter"
+import DealerList from "../components/admin/DealerList"
+import UserList from "../components/admin/UserList"
 
 export const router = createBrowserRouter([
     {
@@ -88,6 +90,14 @@ export const router = createBrowserRouter([
             {
                 path: "login",
                 element: <Login />
+            },
+            {
+                path: "users",
+                element: <UserList />
+            },
+            {
+                path: "dealers",
+                element: <DealerList />
             },
             {
                 path: "cars",

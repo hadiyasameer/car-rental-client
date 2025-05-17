@@ -89,7 +89,7 @@ function ViewCar() {
         <div className='flex-1'>
           <div className='my-30'>
             <h2 className='text-3xl '>Description:</h2>
-            <p className='2xl'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste pariatur reiciendis rem nulla soluta cupiditate, nobis velit laborum voluptatum est officia, itaque error omnis quos sapiente doloribus. Illum natus voluptas rerum est! Hic laboriosam dolorum incidunt facere unde, accusantium libero, quam, ut enim optio totam? Illum laborum ea veniam sunt.</p>
+            <p className='2xl'>{car.description}</p>
           </div>
           <div className='flex flex-col items-center'>
             <p className="text-lg mb-4">{car.make} - {car.pricePerDay}/day</p>

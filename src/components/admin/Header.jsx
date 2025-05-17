@@ -45,6 +45,12 @@ function Header() {
                     <Link to="/admin">Home</Link>
                 </li>
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
+                    <Link to="admin/users">Users</Link>
+                </li>
+                <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
+                    <Link to="admin/dealers">Dealers</Link>
+                </li>
+                <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
                     <Link to="admin/cars">Cars</Link>
                 </li>
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
@@ -53,9 +59,9 @@ function Header() {
                 <li>
                     {adminData.email ? (
                         <li className="my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded">
-                                <button onClick={()=>{handleLogout();setClick(false)}} className="text-[#410512] bg-white px-4 py-1 rounded ">
-                                    Logout
-                                </button>
+                            <button onClick={() => { handleLogout(); setClick(false) }} className="text-[#410512] bg-white px-4 py-1 rounded ">
+                                Logout
+                            </button>
                         </li>) : (
                         <li className="my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded">
                             <Link to="/admin/login">
@@ -66,8 +72,8 @@ function Header() {
                         </li>
                     )
                     }
-            </li>
-        </ul>
+                </li>
+            </ul>
         </div >
     );
 
@@ -85,6 +91,12 @@ function Header() {
                         <ul className='flex gap-8 mr-16 text-[18px] justify-end'>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
                                 <Link to="/admin">Home</Link>
+                            </li>
+                            <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
+                                <Link to="/admin/users">Users</Link>
+                            </li>
+                            <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
+                                <Link to="/admin/dealers">Dealers</Link>
                             </li>
                             <li className='hover:text-yellow-500 transition font-medium text-2xl hover:border-yellow-500 cursor-pointer'>
                                 <Link to="/admin/cars">Cars</Link>

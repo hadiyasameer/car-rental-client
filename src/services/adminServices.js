@@ -16,5 +16,14 @@ export const viewCar = (carId) => {
     return axiosInstance.get(`car/ViewCar/${carId}`)
 }
 export const fetchDealers = () => {
-    return axiosInstance.get('/admin/dealers',{ withCredentials: true });
+    return axiosInstance.get('admin/dealers', { withCredentials: true });
 }
+export const fetchUsers = () => {
+    return axiosInstance.get('admin/users', { withCredentials: true })
+}
+export const deleteDealerById = (dealerId) => {
+    return axiosInstance.delete(`admin/dealers/${dealerId}`, { withCredentials: true });
+};
+export const deleteUserById = (userId) => {
+    return axiosInstance.delete(`admin/users/${userId}`, { withCredentials: true });
+};
