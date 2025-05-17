@@ -47,8 +47,10 @@ export const getUserProfile = () => {
     return axiosInstance.get("user/profile");
 };
 
-
 export const carlist = (filters = {}) => {
     return axiosInstance.get('car/carlist', { params: filters });
-  };
-  
+};
+
+export const getBookedDates = (carId) => {
+    return axiosInstance.get(`/booking/booked-dates/${carId}`);
+};

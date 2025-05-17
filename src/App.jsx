@@ -3,6 +3,7 @@ import { router } from './routes/Router'
 import React, { useEffect, useState } from 'react'
 import { MdOutlineBrightness2 } from "react-icons/md"
 import { BsBrightnessHigh } from "react-icons/bs"
+import 'react-datepicker/dist/react-datepicker.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false)

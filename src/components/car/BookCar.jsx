@@ -43,7 +43,7 @@ function BookCar({item}) {
                 <div className='flex-1'>
                   <div className='my-30'>
                     <h2 className='text-3xl '>Description:</h2>
-                    <p className='text-2xl'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste pariatur reiciendis rem nulla soluta cupiditate, nobis velit laborum voluptatum est officia, itaque error omnis quos sapiente doloribus. Illum natus voluptas rerum est! Hic laboriosam dolorum incidunt facere unde, accusantium libero, quam, ut enim optio totam? Illum laborum ea veniam sunt.</p>
+                    <p className='text-2xl'>{item.description}</p>
                     <p className="text-lg mb-4">{item.make} - {item.pricePerDay}/day</p>
                   </div>
                   
