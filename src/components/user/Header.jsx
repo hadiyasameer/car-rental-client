@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Form, Link, useNavigate } from 'react-router-dom';
 import { MdOutlineMenu } from "react-icons/md";
 import { FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +14,16 @@ function Header() {
     const userData = useSelector((state) => state.user.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [searchTerm, setSearchTerm] = useState('');
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (searchTerm.trim()) {
+            navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+            setSearchTerm('');
+            setClick(false);
+        }
+    };
     const handleLogout = async () => {
         try {
             await userLogout()
@@ -49,6 +58,20 @@ function Header() {
     const content = (
         <div className='lg:hidden block absolute top-16 w-full left-0 right-0 bg-[#410512] transition'>
             <ul className='text-center text-xl p-20'>
+                <li className='mb-6'>
+                    <form onSubmit={handleSearch} className="flex flex-col items-center gap-4">
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="px-4 py-2 rounded bg-white text-black w-4/5"
+                        />
+                        <button type="submit" className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-2 rounded font-semibold">
+                            Submit
+                        </button>
+                    </form>
+                </li>
                 <li onClick={() => setClick(false)} className='my-4 py-4 border-b border-slate-800 hover:bg-[#410512] hover:rounded'>
                     <Link to="/">Home</Link>
                 </li>
@@ -111,7 +134,24 @@ function Header() {
                         <Link to="/">RideQatar</Link>
                     </span>
                 </div>
+                <div className="hidden md:flex items-center justify-center flex-1">
+                    <form onSubmit={handleSearch} className="flex items-center space-x-2">
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="px-4 py-2 rounded bg-white text-black w-full sm:w-64"
+                        />
+                        <button
+                            type="submit"
+                            className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 py-2 rounded font-semibold"
+                        >
+                            Submit
+                        </button>
+                    </form>
 
+                </div>
                 <div className='lg:flex md:flex lg:flex-1 items-center justify-end font-normal hidden'>
                     <div className='flex-10'>
                         <ul className='flex gap-8 mr-16 text-[18px] justify-end'>

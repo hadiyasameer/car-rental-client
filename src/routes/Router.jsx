@@ -24,6 +24,7 @@ import CarFilter from "../components/car/CarFilter"
 import CarDealerFilter from "../components/admin/CarDealerFilter"
 import DealerList from "../components/admin/DealerList"
 import UserList from "../components/admin/UserList"
+import SearchResults from "../components/user/SearchResults"
 
 export const router = createBrowserRouter([
     {
@@ -47,9 +48,9 @@ export const router = createBrowserRouter([
                 element: <Cars />
             },
             {
-                path:"filter",
-                element:<CarFilter/>
-            },          
+                path: "filter",
+                element: <CarFilter />
+            },
 
             {
                 path: "booking",
@@ -62,7 +63,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "signup",
-                element: <SignUp role="user"/>
+                element: <SignUp role="user" />
             },
             {
                 path: "profile",
@@ -76,6 +77,11 @@ export const router = createBrowserRouter([
                 path: "payment/success",
                 element: <BookingSuccess />
             },
+            {
+                path: "/search",
+                element: <SearchResults />
+
+            }
 
         ]
     },
@@ -136,7 +142,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "signup",
-                element: <SignUp role="dealer"/>
+                element: <SignUp role="dealer" />
             },
             {
                 path: "carlist",

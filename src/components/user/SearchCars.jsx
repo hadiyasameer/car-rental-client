@@ -64,24 +64,7 @@ function SearchCars() {
                         </div>
                     )}
                 </div>
-                {/* <div className='flex flex-col'>
-                    <label htmlFor="model" className='text-3xl mb-8'>Model</label>
-                    <select name="model" id="model" value={selectedModel} onChange={handleModelChange} className="py-2 px-4 min-w-[200px] border-1 solid bg-white rounded-md text-black">
-                        <option value="" disabled>
-                            Choose a model
-                        </option>
-                        {models.map((model, index) => (
-                            <option key={index} value={model}>
-                                {model}
-                            </option>
-                        ))}
-                    </select>
-                    {selectedModel && (
-                        <div className="text-lg text-white mt-2">
-                            You selected: {selectedModel}
-                        </div>
-                    )}
-                </div> */}
+                
                 <div className='flex flex-col'>
                     <h3 className='text-3xl'>Price</h3>
                     <div className='flex lg:flex-row flex-col'>
@@ -97,24 +80,7 @@ function SearchCars() {
                         </div>
                     </div>
                 </div>
-                {/* <div className='flex flex-col'>
-                    <label htmlFor="location" className='text-3xl mb-8'>Location</label>
-                    <select name="location" id="location" value={selectedLocation} onChange={handleLocationChange} className="py-2 px-4 border-1 min-w-[200px] solid bg-white rounded-md text-black">
-                        <option value="" disabled>
-                            Choose a location
-                        </option>
-                        {locations.map((location, index) => (
-                            <option key={index} value={location}>
-                                {location}
-                            </option>
-                        ))}
-                    </select>
-                    {selectedLocation && (
-                        <div className="text-lg text-white mt-2">
-                            You selected: {selectedLocation}
-                        </div>
-                    )}
-                </div> */}
+                
             </div>
             <div className="flex justify-center mt-8">
                 <button onClick={handleSearch} className="bg-[#410512] text-white text-xl px-6 py-2 rounded hover:bg-[#5c1a27] transition">
