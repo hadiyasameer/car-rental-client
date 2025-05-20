@@ -16,21 +16,26 @@ const UpdateCar = () => {
     });
     const [image, setImage] = useState(null);
     const [loading, setLoading] = useState(false);
-
+    const [initialLoading, setInitialLoading] = useState(true);
+    
     useEffect(() => {
         const fetchCar = async () => {
             try {
                 const res = await getCarById(carId);
-                const car = res.data;
+                const car = res.data.data;
+                console.log("Fetched car:", car); 
+
                 setValues({
-                    title: car.title,
-                    pricePerDay: car.pricePerDay,
-                    isAvailable: car.isAvailable,
-                    description: car.description,
-                    location: car.location,
+                    title: car.title || '',
+                    pricePerDay: car.pricePerDay?.toString() || '',
+                    isAvailable: car.isAvailable ?? true,
+                    description: car.description || '',
+                    location: car.location || '',
                 });
             } catch (error) {
                 toast.error("Failed to load car details");
+            } finally {
+                setInitialLoading(false);
             }
         };
         fetchCar();
@@ -73,30 +78,27 @@ const UpdateCar = () => {
             setLoading(false);
         }
     };
+    if (initialLoading) return <WheelSpinner />;
 
     return (
         <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow">
-            {loading ? (
-                <WheelSpinner />
-            ) : (
-                <>
-                    <h2 className="text-2xl font-bold mb-6">Update Car</h2>
-                    <form className="space-y-4" onSubmit={handleSubmit}>
-                        <input name="title" type="text" value={values.title} onChange={handleChange} placeholder="Car Title" required className="w-full border px-3 py-2 rounded" />
-                        <input name="pricePerDay" type="number" value={values.pricePerDay} onChange={handleChange} placeholder="Price Per Day" required className="w-full border px-3 py-2 rounded" />
-                        <textarea name="description" value={values.description} onChange={handleChange} placeholder="Description" className="w-full border px-3 py-2 rounded" />
-                        <input name="location" type="text" value={values.location} onChange={handleChange} placeholder="Location" required className="w-full border px-3 py-2 rounded" />
-                        <label className="flex items-center space-x-2">
-                            <input type="checkbox" name="isAvailable" checked={values.isAvailable} onChange={handleChange} />
-                            <span>Available</span>
-                        </label>
-                        <input type="file" onChange={handleImageChange} className="w-full border px-3 py-2 rounded" />
-                        <button disabled={loading} className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded">
-                            {loading ? 'Updating...' : 'Update Car'}
-                        </button>
-                    </form>
-                </>
-            )}
+
+            <h2 className="text-2xl font-bold mb-6">Update Car</h2>
+            <form className="space-y-4" onSubmit={handleSubmit}>
+                <input name="title" type="text" value={values.title} onChange={handleChange} placeholder="Car Title" required className="w-full border px-3 py-2 rounded" />
+                <input name="pricePerDay" type="number" value={values.pricePerDay} onChange={handleChange} placeholder="Price Per Day" required className="w-full border px-3 py-2 rounded" />
+                <textarea name="description" value={values.description} onChange={handleChange} placeholder="Description" className="w-full border px-3 py-2 rounded" />
+                <input name="location" type="text" value={values.location} onChange={handleChange} placeholder="Location" required className="w-full border px-3 py-2 rounded" />
+                <label className="flex items-center space-x-2">
+                    <input type="checkbox" name="isAvailable" checked={values.isAvailable} onChange={handleChange} />
+                    <span>Available</span>
+                </label>
+                <input type="file" onChange={handleImageChange} className="w-full border px-3 py-2 rounded" />
+                <button disabled={loading} className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 rounded">
+                    {loading ? 'Updating...' : 'Update Car'}
+                </button>
+            </form>
+
         </div>
     );
 };

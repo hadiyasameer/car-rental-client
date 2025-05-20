@@ -26,7 +26,6 @@ function AdminBookings() {
               <th className="p-2">User</th>
               <th className="p-2">Email</th>
               <th className="p-2">Car</th>
-              <th className="p-2">Rental Days</th>
               <th className="p-2">Total Price Paid</th>
             </tr>
           </thead>
@@ -37,7 +36,6 @@ function AdminBookings() {
                 <td className="p-2 text-center">{booking.userId?.name || 'N/A'}</td>
                 <td className="p-2 text-center">{booking.userId?.email || 'N/A'}</td>
                 <td className="p-2 text-center">{booking.carId?.title}</td>
-                <td className="p-2 text-center">{booking.rentalDays}</td>
                 <td className="p-2 text-center">{booking.totalPrice}</td>
               </tr>
             ))}

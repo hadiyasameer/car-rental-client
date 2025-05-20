@@ -11,7 +11,11 @@ const DealerCars = () => {
     const [loading, setLoading] = useState(true);
     const dealerId = useSelector((state) => state.dealer?.dealer?._id);
     const navigate = useNavigate();
-
+    useEffect(() => {
+        if (!dealerId) {
+            toast.warn("Please login to access your dashboard");
+        }
+    }, [dealerId]);
     useEffect(() => {
         const fetchDealerCars = async () => {
             try {

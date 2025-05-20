@@ -14,8 +14,7 @@ function Booking() {
   useEffect(() => {
     viewbooking().then((res) => {
       setBooking(res.data)
-      console.log("Booking carId:", res.data); // Add this line to check the carId
-
+      console.log("Booking carId:", res.data); 
       console.log(res.data)
     }).catch((err) => {
       console.log(err);

@@ -1,57 +1,53 @@
-import React from 'react'
+import React from 'react';
 import { FaCar } from 'react-icons/fa';
-import { TbManualGearbox } from 'react-icons/tb'
+import { TbManualGearbox } from 'react-icons/tb';
 import { BsFuelPump } from "react-icons/bs";
 import { PiArmchairFill } from "react-icons/pi";
 
-function BookCar({item}) {
+function BookCar({ item }) {
   return (
-    <div>
-      <div className='flex bg-slate-100'>
-                <div className='flex-1'>
-                  <h1 className="text-3xl font-bold w-full m-10">{item.title}</h1>
-                  <figure className='flex-1  '>
-                    <img
-                      src={item.image}
-                      alt="Cars" className='relative object-cover w-3/4 h-full' />
-                  </figure>
-                  <div className="flex justify-between w-3/4">
-                    <div className="group">
-                      {item.carType}
-                      <FaCar className="text-4xl transition group-hover:animate-spin group-hover:text-yellow-500" />
-                    </div>
-                    <div className="group">
-                      {item.transmission}
-                      <TbManualGearbox className="text-4xl" />
+    <div className="p-5 bg-slate-100">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold mb-4">{item.title}</h1>
 
-                    </div>
-                    <div className="group">
-                      {item.fuelType}
-                      <BsFuelPump className="text-4xl" />
+          <img
+            src={item.image}
+            alt="Car"
+            className="w-full max-h-[300px] object-cover rounded mb-4"
+          />
 
-                    </div>
-                    <div className="group">
-                      {item.seatingCapacity}
-                      <PiArmchairFill className="text-4xl" />
-                    </div>
-                    <div className="group">
-                      <div className="badge badge-secondary h-full">Available</div>
-                    </div>
-                  </div>
-                </div>
+          {/* Specs Section */}
+          <div className="flex flex-wrap justify-between gap-4 text-lg">
+            <div className="flex items-center gap-2 w-[48%] sm:w-auto">
+              <FaCar className="text-2xl text-yellow-500" />
+              <span>{item.carType}</span>
+            </div>
+            <div className="flex items-center gap-2 w-[48%] sm:w-auto">
+              <TbManualGearbox className="text-2xl text-yellow-500" />
+              <span>{item.transmission}</span>
+            </div>
+            <div className="flex items-center gap-2 w-[48%] sm:w-auto">
+              <BsFuelPump className="text-2xl text-yellow-500" />
+              <span>{item.fuelType}</span>
+            </div>
+            <div className="flex items-center gap-2 w-[48%] sm:w-auto">
+              <PiArmchairFill className="text-2xl text-yellow-500" />
+              <span>{item.seatingCapacity} Seats</span>
+            </div>
+          </div>
+        </div>
 
-                <div className='flex-1'>
-                  <div className='my-30'>
-                    <h2 className='text-3xl '>Description:</h2>
-                    <p className='text-2xl'>{item.description}</p>
-                    <p className="text-lg mb-4">{item.make} - {item.pricePerDay}/day</p>
-                  </div>
-                  
-                </div>
-
-              </div>
+        <div className="flex-1 space-y-4">
+          <h2 className="text-2xl font-semibold pt-20">Description:</h2>
+          <p className="text-gray-700 text-lg">{item.description}</p>
+          <p className="text-xl font-medium">
+            {item.make} - <span className="text-[#410512]">{item.pricePerDay}/day</span>
+          </p>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default BookCar
+export default BookCar;
