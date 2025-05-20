@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsGeoAltFill, BsTelephoneFill, BsEnvelopeAtFill } from 'react-icons/bs'
 import Subscribe from '../../components/user/Subscribe'
 import Location from '../../components/user/Location'
 import WheelSpinner from '../../components/shared/WheelSpinner'
 
 function Contact() {
+    const [loading, setLoading] = useState(true);
     return (
         <div>
             {loading ? (

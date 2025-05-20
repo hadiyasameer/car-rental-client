@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Subscribe from '../../components/user/Subscribe'
 import WheelSpinner from '../../components/shared/WheelSpinner'
 
 function About() {
+  const [loading, setLoading] = useState(true);
   return (
     <>
       {loading ? (
