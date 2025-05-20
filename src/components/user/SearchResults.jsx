@@ -34,7 +34,7 @@ const SearchResults = () => {
             ) : cars.length === 0 ? (
                 <p className="text-center text-lg text-red-600">No results found.</p>
             ) : (
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {cars.map((car) => (
                         <CarCards key={car._id} car={car} />
                     ))}
