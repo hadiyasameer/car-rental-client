@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsGeoAltFill, BsTelephoneFill, BsEnvelopeAtFill } from 'react-icons/bs'
 import Subscribe from '../../components/user/Subscribe'
 import Location from '../../components/user/Location'
