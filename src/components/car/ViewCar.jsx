@@ -9,6 +9,7 @@ import { PiArmchairFill } from "react-icons/pi";
 import { toast } from 'react-toastify';
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
+import WheelSpinner from '../shared/WheelSpinner';
 
 
 function ViewCar() {
@@ -79,7 +80,7 @@ function ViewCar() {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <WheelSpinner />
   if (!car) return <div>No car details available.</div>;
   if (error) return <div className="text-red-600">{error}</div>;
 

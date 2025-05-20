@@ -55,7 +55,7 @@ function Profile() {
                     </button>
                 </div>
             ) : (
-                <p>Loading profile...</p>
+                <WheelSpinner />
             )}
         </div>
     );

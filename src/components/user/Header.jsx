@@ -129,7 +129,7 @@ function Header() {
     return (
         <nav className='text-white px-4 md:px-12 lg:px-20 py-4 shadow-md relative z-50'>
             <div className='flex justify-between items-center flex-wrap'>
-                <div className='flex items-center flex-shrink-0'>
+                <div className='flex items-center flex-shrink-0 text-3xl font-bold text-yellow-400'>
                     <Link to="/">RideQatar</Link>
                 </div>
                 <div className="hidden md:flex justify-center flex-1">

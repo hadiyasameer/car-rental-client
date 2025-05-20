@@ -24,7 +24,7 @@ const DealerBookings = () => {
 
 
 
-    if (loading) return <div className="text-center mt-10">Loading bookings...</div>;
+    if (loading) return <WheelSpinner />
 
     if (!loading && bookings.length === 0) return <div className="text-center mt-10">No bookings yet.</div>;
 

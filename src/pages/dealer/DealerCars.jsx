@@ -43,7 +43,7 @@ const DealerCars = () => {
     };
 
 
-    if (loading) return <div className="text-center mt-10">Loading cars...</div>;
+    if (loading) return <WheelSpinner />
 
     return (
         <div className="p-6">

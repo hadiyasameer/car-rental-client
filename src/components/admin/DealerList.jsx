@@ -41,7 +41,7 @@ function DealerList() {
             <h1 className="text-3xl font-bold mb-4">Dealer List</h1>
             <div className="overflow-x-auto">
                 {loading ? (
-                    <p>Loading...</p>
+                    <WheelSpinner />
                 ) : (
                     <table className="table-auto w-full border-0">
                         <thead>

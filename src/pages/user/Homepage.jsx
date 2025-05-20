@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Hero from '../../components/user/Hero'
 import CarCarousel from '../../components/user/CarCarousel'
 import Subscribe from '../../components/user/Subscribe'
@@ -7,17 +7,25 @@ import Features from '../../components/user/Features'
 import SearchCars from '../../components/user/SearchCars'
 
 function Homepage() {
+    const [loading, setLoading] = useState(false);
+
     return (
         <div>
-            <Hero />
-            <SearchCars />
-            <div className='text-center text-4xl font-bold my-7 text-[#410512]' >
-                <span>Hot Offers on Wheels</span>
-                <CarCarousel />
-            </div>
-            <Subscribe />
-            <CarTypeCards />
-            <Features />
+            {loading ? (
+                <WheelSpinner />
+            ) : (
+                <>
+                    <Hero />
+                    <SearchCars />
+                    <div className='text-center text-4xl font-bold my-7 text-[#410512]' >
+                        <span>Hot Offers on Wheels</span>
+                        <CarCarousel />
+                    </div>
+                    <Subscribe />
+                    <CarTypeCards />
+                    <Features />
+                </>
+            )}
         </div>
     )
 }

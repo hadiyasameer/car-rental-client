@@ -15,6 +15,7 @@
     "@tailwindcss/vite": "^4.1.4",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.9.0",
+    "framer-motion": "^12.12.1",
     "react": "^19.0.0",
     "react-datepicker": "^8.3.0",
     "react-dom": "^19.0.0",

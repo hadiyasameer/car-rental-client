@@ -29,7 +29,7 @@ const SearchResults = () => {
             </h2>
 
             {loading ? (
-                <p className="text-center text-xl">Loading...</p>
+                <WheelSpinner />
             ) : cars.length === 0 ? (
                 <p className="text-center text-lg text-red-600">No results found.</p>
             ) : (

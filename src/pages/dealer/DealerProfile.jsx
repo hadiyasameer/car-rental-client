@@ -56,7 +56,7 @@ function DealerProfile() {
                     </button>
                 </div>
             ) : (
-                <p>Loading profile...</p>
+                <WheelSpinner />
             )}
         </div>
     );
