@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { addcar } from '../../services/dealerServices';
+import WheelSpinner from '../../components/shared/WheelSpinner';
 
 const AddCar = () => {
     const navigate = useNavigate();

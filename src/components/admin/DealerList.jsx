@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { deleteDealerById, fetchDealers } from '../../services/adminServices';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import WheelSpinner from '../shared/WheelSpinner';
 
 
 function DealerList() {

@@ -4,6 +4,7 @@ import { userLogout, getUserProfile } from '../../services/userServices';
 import { persister } from '../../redux/store';
 import { clearUser } from '../../redux/features/userSlice';
 import { useDispatch } from 'react-redux';
+import WheelSpinner from '../../components/shared/WheelSpinner';
 
 
 function Profile() {

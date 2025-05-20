@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { carlist } from '../../services/userServices';
 import CarCards from '../car/CarCards'
+import WheelSpinner from '../shared/WheelSpinner';
 
 const SearchResults = () => {
     const [cars, setCars] = useState([]);

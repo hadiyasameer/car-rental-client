@@ -5,6 +5,7 @@ import { persister } from '../../redux/store';
 import { useDispatch } from 'react-redux';
 import { dealerLogout, getDealerProfile } from '../../services/dealerServices';
 import { clearDealer } from '../../redux/features/dealerSlice';
+import WheelSpinner from '../../components/shared/WheelSpinner';
 
 
 function DealerProfile() {

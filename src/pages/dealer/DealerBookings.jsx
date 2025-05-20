@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { getDealerBookings } from '../../services/dealerServices';
+import WheelSpinner from '../../components/shared/WheelSpinner';
 
 
 const DealerBookings = () => {

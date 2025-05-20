@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { deleteUserById, fetchUsers } from '../../services/adminServices';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import WheelSpinner from '../shared/WheelSpinner';
 
 
 function UserList() {

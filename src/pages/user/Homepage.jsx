@@ -5,6 +5,7 @@ import Subscribe from '../../components/user/Subscribe'
 import CarTypeCards from '../../components/user/CarTypeCards'
 import Features from '../../components/user/Features'
 import SearchCars from '../../components/user/SearchCars'
+import WheelSpinner from '../../components/shared/WheelSpinner'
 
 function Homepage() {
     const [loading, setLoading] = useState(false);

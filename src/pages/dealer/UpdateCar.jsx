@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getCarById, updateCar } from '../../services/dealerServices';
+import WheelSpinner from '../../components/shared/WheelSpinner';
 
 const UpdateCar = () => {
     const { id: carId } = useParams();
