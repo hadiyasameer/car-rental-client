@@ -85,50 +85,62 @@ function ViewCar() {
   if (error) return <div className="text-red-600">{error}</div>;
 
   return (
-    <div className="lg:p-10">
-      <div className='flex flex-col lg:flex-row'>
-        <div >
-          <h1 className="text-3xl font-bold w-full m-10">{car.title}</h1>
-          <figure className='flex-1  w-200'>
-            <img
-              src={car.image}
-              alt="Cars" className='relative object-cover w-1/2 lg:w-3/4 h-full' />
-          </figure>
-          <div className="flex justify-between w-3/4">
-            <div className="group">
-              {car.carType}
-              <FaCar className="text-4xl transition group-hover:animate-spin group-hover:text-yellow-500" />
-            </div>
-            <div className="group">
-              {car.transmission}
-              <TbManualGearbox className="text-4xl" />
+    <div className="lg:p-10 p-5">
+      <div className="flex flex-col lg:flex-row gap-10">
 
-            </div>
-            <div className="group">
-              {car.fuelType}
-              <BsFuelPump className="text-4xl" />
+        <div className="lg:w-1/2 space-y-6">
+          <h1 className="text-3xl font-bold">{car.title}</h1>
+          <img src={car.image} alt="Car" className="w-full h-[300px] object-cover rounded" />
 
+          <div className="flex flex-wrap justify-between items-center gap-4 mt-4">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <FaCar className="text-2xl text-yellow-500" />
+              <span>{car.carType}</span>
             </div>
-            <div className="group">
-              {car.seatingCapacity}
-              <PiArmchairFill className="text-4xl" />
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <TbManualGearbox className="text-2xl text-yellow-500" />
+              <span>{car.transmission}</span>
             </div>
-            <div className="group">
-              <div className="badge badge-secondary h-full">Available</div>
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <BsFuelPump className="text-2xl text-yellow-500" />
+              <span>{car.fuelType}</span>
+            </div>
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <PiArmchairFill className="text-2xl text-yellow-500" />
+              <span>{car.seatingCapacity} Seats</span>
+            </div>
+            <div className="w-full sm:w-auto">
+              <div className="text-sm font-medium">
+                {car.isAvailable ? (
+                  <span className="inline-block px-3 py-1 bg-green-500 text-white rounded-full">
+                    Available
+                  </span>
+                ) : (
+                  <span className="inline-block px-3 py-1 bg-red-500 text-white rounded-full">
+                    Unavailable
+                  </span>
+                )}
+              </div>
+
             </div>
           </div>
+
+
         </div>
 
-        <div className='flex-1'>
-          <div className='my-30'>
-            <h2 className='text-3xl '>Description:</h2>
-            <p className='2xl'>{car.description}</p>
+        <div className="lg:w-1/2 space-y-6">
+          <div>
+            <h2 className="text-2xl font-semibold mb-2">Description:</h2>
+            <p className="text-gray-700">{car.description}</p>
           </div>
-          <div className='flex flex-col items-center'>
-            <p className="text-lg mb-4">{car.make} - {car.pricePerDay}/day</p>
+
+          <div className="text-lg text-gray-800">
+            <p className="mb-4">{car.make} - <span className="font-semibold">{car.pricePerDay}/day</span></p>
+
             {!isAdmin && (
-              <>
-                <label><span>Start Date: </span>
+              <div className="space-y-4">
+                <div>
+                  <label className="block font-medium mb-1">Start Date:</label>
                   <DatePicker
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
@@ -138,12 +150,13 @@ function ViewCar() {
                     startDate={startDate}
                     endDate={endDate}
                     dateFormat="yyyy-MM-dd"
-                    placeholderText="Select a start date"
-                    className="border p-2 rounded mb-4"
+                    placeholderText="Select start date"
+                    className="border p-2 rounded w-full"
                   />
-                </label>
+                </div>
 
-                <label><span>End Date: </span>
+                <div>
+                  <label className="block font-medium mb-1">End Date:</label>
                   <DatePicker
                     selected={endDate}
                     onChange={(date) => setEndDate(date)}
@@ -153,23 +166,25 @@ function ViewCar() {
                     startDate={startDate}
                     endDate={endDate}
                     dateFormat="yyyy-MM-dd"
-                    placeholderText="Select an end date"
-                    className="border p-2 rounded mb-4"
+                    placeholderText="Select end date"
+                    className="border p-2 rounded w-full"
                   />
-                </label>
-                <button onClick={handleBooking} disabled={!startDate || !endDate}
-                  className="bg-[#410512] text-white px-4 py-2 rounded hover:bg-[#5c1a27]">
+                </div>
+
+                <button
+                  onClick={handleBooking}
+                  disabled={!startDate || !endDate}
+                  className="bg-[#410512] text-white px-6 py-2 rounded hover:bg-[#5c1a27] disabled:opacity-50"
+                >
                   Book
                 </button>
-              </>
-            )
-            }
+              </div>
+            )}
           </div>
         </div>
       </div>
-
-
     </div>
+
   );
 }
 
